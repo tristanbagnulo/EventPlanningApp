@@ -19,6 +19,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.*;
 
+//written by Neil Matani (z5162753) for Lab4 INFS2605 20t1
+
 public class App extends Application {
     
     /* What should happen when you first start the program? */

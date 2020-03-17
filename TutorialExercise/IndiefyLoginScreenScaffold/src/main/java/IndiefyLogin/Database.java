@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+//written by Neil Matani (z5162753) for Lab4 INFS2605 20t1
+
 public class Database {
     
     public static Connection conn;
