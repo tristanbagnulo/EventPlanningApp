@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IndiefyLogin.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IndiefyLogin.MusicListController">
    <children>
       <Label layoutX="253.0" layoutY="27.0" text="Music list">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="16.0" layoutY="59.0" prefHeight="323.0" prefWidth="569.0">
+      <TableView fx:id="musicListTable" layoutX="16.0" layoutY="63.0" prefHeight="323.0" prefWidth="569.0">
         <columns>
           <TableColumn prefWidth="168.0" text="Album" />
           <TableColumn minWidth="0.0" prefWidth="132.0" text="Artist" />
