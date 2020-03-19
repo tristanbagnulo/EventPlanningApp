@@ -17,7 +17,7 @@ public class Music {
         this.album = new SimpleStringProperty(album);
         // Complete the constructor
     }
-    
+    //What's good.
    // Add getters for String Properties
     
 }
