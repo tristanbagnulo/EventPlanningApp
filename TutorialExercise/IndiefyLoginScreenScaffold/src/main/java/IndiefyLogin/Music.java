@@ -7,8 +7,6 @@ public class Music {
    // Add the other attributes for the Music List
     
     public Music(String album, String artist, String genre, String year) {
-        this.album = album; 
-        this.artist = artist; 
         this.album = album;
         this.artist = artist;
         this.genre = genre;
