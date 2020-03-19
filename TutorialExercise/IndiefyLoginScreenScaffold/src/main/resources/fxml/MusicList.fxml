@@ -15,8 +15,10 @@
       </Label>
       <TableView layoutX="16.0" layoutY="59.0" prefHeight="323.0" prefWidth="569.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="168.0" text="Album" />
+          <TableColumn minWidth="0.0" prefWidth="132.0" text="Artist" />
+            <TableColumn prefWidth="120.0" text="Genre" />
+            <TableColumn prefWidth="132.0" text="Year" />
         </columns>
       </TableView>
    </children>
