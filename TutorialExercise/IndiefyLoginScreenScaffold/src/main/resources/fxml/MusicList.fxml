@@ -15,10 +15,10 @@
       </Label>
       <TableView fx:id="musicListTable" layoutX="16.0" layoutY="63.0" prefHeight="323.0" prefWidth="569.0">
         <columns>
-          <TableColumn prefWidth="168.0" text="Album" />
-          <TableColumn minWidth="0.0" prefWidth="132.0" text="Artist" />
-            <TableColumn prefWidth="120.0" text="Genre" />
-            <TableColumn prefWidth="132.0" text="Year" />
+          <TableColumn fx:id="albumCol" prefWidth="168.0" text="Album" />
+          <TableColumn fx:id="artistCol" minWidth="0.0" prefWidth="132.0" text="Artist" />
+            <TableColumn fx:id="genreCol" prefWidth="120.0" text="Genre" />
+            <TableColumn fx:id="yearCol" prefWidth="132.0" text="Year" />
         </columns>
       </TableView>
    </children>

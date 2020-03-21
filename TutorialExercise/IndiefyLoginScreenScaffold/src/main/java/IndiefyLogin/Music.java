@@ -1,25 +1,31 @@
+
+package IndiefyLogin;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Music {
     
-    private String album;
-    private String artist;
-    private String genre;
-    private String year;
+    private StringProperty album;
+    private StringProperty artist;
+    private StringProperty genre;
+    private StringProperty year;
    // Add the other attributes for the Music List
     
-    public Music(String album, String artist, String genre, String year) {
-        this.album = album;
-        this.artist = artist;
-        this.genre = genre;
-        this.year = year;
+    public Music() {
+       this("","","","");
     }
 
-    public Music(String album) {
+    public Music(String album, String artist, String genre, String year) {
         this.album = new SimpleStringProperty(album);
+        this.artist = new SimpleStringProperty(artist);
+        this.genre = new SimpleStringProperty(genre);
+        this.year = new SimpleStringProperty(year);
         // Complete the constructor
     }
-    //What's good.
+    
    // Add getters for String Properties
-    public StringPropery getAlbum(){
+    public StringProperty getAlbum(){
         return album;
     }
     
@@ -27,27 +33,27 @@ public class Music {
         this.album = album;
     }
     
-    public String getArtist(){
+    public StringProperty getArtist(){
         return artist;
     }
     
-    public void setArtist(String artist){
+    public void setArtist(StringProperty artist){
         this.artist = artist;
     }
     
-    public String getGenre(){
+    public StringProperty getGenre(){
         return genre;
     }
     
-    public void setGenre(String genre){
+    public void setGenre(StringProperty genre){
         this.genre = genre;
     }
     
-    public String getYear(){
+    public StringProperty getYear(){
         return year;
     }
     
-    public void setYear(String year){
+    public void setYear(StringProperty year){
         this.year = year;
     }
 }
