@@ -5,12 +5,18 @@
  */
 package IndiefyLogin;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 //written by Neil Matani (z5162753) for Lab4 INFS2605 20t1
 
@@ -24,9 +30,18 @@ public class LoginScreenController implements Initializable{
     //Initiate JavaFX nodes (visual elements), how do we connect these variables to the FXML view?
     @FXML
     Button loginButton = new Button("Login");
-    Label incorrectCred = new Label("Incorrect password or username!");
+    
+    @FXML
+    Label incorrectCred = new Label("Incorrect password or username");
+    
+    @FXML
     TextField userField = new TextField();
+    
+    @FXML
     PasswordField passwordField = new PasswordField();
+    
+    @FXML
+    Button nextButton = new Button("Next>>>");
     
     
     // Initiate the database class
@@ -48,15 +63,31 @@ public class LoginScreenController implements Initializable{
               // What should the user see when the login is successful?
 
               System.out.println("Login Successful");
+              nextButton.setVisible(true);
             } else {
               // What should the user see when the login is unsuccessful?
               incorrectCred.setVisible(true);
             } 
     }
+    
+    @FXML
+    private void switchToMusic(ActionEvent event) throws IOException {
+       
+        System.out.println("Switching pages");
+        Parent parent = FXMLLoader.load(getClass().getResource("MusicList.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }		
 
-    @Override
+    @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        incorrectCred.setVisible(false);
     }
-}
+}  
+    
+
 

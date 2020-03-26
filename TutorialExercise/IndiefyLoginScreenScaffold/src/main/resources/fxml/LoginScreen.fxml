@@ -9,14 +9,15 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IndiefyLogin.LoginScreenController">
    <children>
-      <Label layoutX="266.0" layoutY="91.0" text="Indiefy">
+      <Label layoutX="266.0" layoutY="39.0" text="Indiefy">
          <font>
-            <Font size="24.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <TextField fx:id="userField" layoutX="225.0" layoutY="149.0" promptText="Login" />
-      <Button fx:id="loginButton" layoutX="274.0" layoutY="251.0" mnemonicParsing="false" text="Login" />
+      <Button fx:id="loginButton" layoutX="276.0" layoutY="252.0" mnemonicParsing="false" text="Login" />
       <PasswordField fx:id="passwordField" layoutX="225.0" layoutY="200.0" promptText="Password" />
-      <Label fx:id="incorrectCred" layoutX="89.0" layoutY="309.0" text="Incorrect password or username!" visible="false" />
+      <Label fx:id="incorrectCred" layoutX="89.0" layoutY="309.0" text="Incorrect password or username" visible="false" />
+      <Button fx:id="nextButton" layoutX="438.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToMusic" text="Next&gt;&gt;&gt;" visible="false" />
    </children>
 </AnchorPane>

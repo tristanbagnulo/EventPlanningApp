@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IndiefyLogin.MusicListController">
+<fx:root id="AnchorPane" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IndiefyLogin.MusicListController">
    <children>
       <Label layoutX="253.0" layoutY="27.0" text="Music list">
          <font>
@@ -22,4 +22,4 @@
         </columns>
       </TableView>
    </children>
-</AnchorPane>
+</fx:root>

@@ -1,3 +1,14 @@
+
+package IndiefyLogin;
+
+import java.io.*;
+import javafx.event.*;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.*;
+
+
 /* DO NOT ALTER THIS CLASS */
 public class PageSwitchHelper {
     
