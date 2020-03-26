@@ -15,7 +15,7 @@
          </font>
       </Label>
       <TextField fx:id="userField" layoutX="225.0" layoutY="149.0" promptText="Login" />
-      <Button fx:id="loginButton" layoutX="276.0" layoutY="252.0" mnemonicParsing="false" text="Login" />
+      <Button fx:id="loginButton" layoutX="276.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" text="Login" />
       <PasswordField fx:id="passwordField" layoutX="225.0" layoutY="200.0" promptText="Password" />
       <Label fx:id="incorrectCred" layoutX="89.0" layoutY="309.0" text="Incorrect password or username" visible="false" />
       <Button fx:id="nextButton" layoutX="438.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToMusic" text="Next&gt;&gt;&gt;" visible="false" />
