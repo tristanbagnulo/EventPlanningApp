@@ -124,7 +124,7 @@ public class DatabaseManager {
         }
     }
     
-    public static Planet fetchPlanetByName(String planetName) {
+    /*public static Planet fetchPlanetByName(String planetName) {
         Planet preparedReturn = null;
         try {
             DatabaseManager.openConnection();
@@ -142,5 +142,5 @@ public class DatabaseManager {
         } finally {
             return preparedReturn;
         }
-    }
+    }*/
 }
