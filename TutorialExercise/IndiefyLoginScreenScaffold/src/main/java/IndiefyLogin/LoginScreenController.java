@@ -29,19 +29,19 @@ public class LoginScreenController implements Initializable{
 
     //Initiate JavaFX nodes (visual elements), how do we connect these variables to the FXML view?
     @FXML
-    Button loginButton = new Button("Login");
+    Button loginButton;
     
     @FXML
-    Label incorrectCred = new Label("Incorrect password or username");
+    Label incorrectCred;
     
     @FXML
-    TextField userField = new TextField();
+    TextField userField;
     
     @FXML
-    PasswordField passwordField = new PasswordField();
+    PasswordField passwordField;
     
     @FXML
-    Button nextButton = new Button("Next>>>");
+    Button nextButton;
     
     
     // Initiate the database class
@@ -52,17 +52,20 @@ public class LoginScreenController implements Initializable{
     /* What should happen when you click the login button?
        How do we connect this function to the FXML view? */
     @FXML
-    private void handleLoginButtonAction(ActionEvent event) {
+    public void handleLoginButtonAction(ActionEvent event) throws IOException{
         
         // Get the user's input from the GUI
+            System.out.println("Login Clicked");
             String user = userField.getText();
             String password = passwordField.getText();
-
+            System.out.println(user + password);
             
+            Database.openConnection();
             if (d.tryLogin(user, password)) {
               // What should the user see when the login is successful?
 
               System.out.println("Login Successful");
+              
               nextButton.setVisible(true);
             } else {
               // What should the user see when the login is unsuccessful?
@@ -71,10 +74,10 @@ public class LoginScreenController implements Initializable{
     }
     
     @FXML
-    private void switchToMusic(ActionEvent event) throws IOException {
+    public void switchToMusic(ActionEvent event) throws IOException {
        
         System.out.println("Switching pages");
-        Parent parent = FXMLLoader.load(getClass().getResource("MusicList.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/fxml/MusicList.fxml"));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -83,6 +86,7 @@ public class LoginScreenController implements Initializable{
     }		
 
     @FXML
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         incorrectCred.setVisible(false);

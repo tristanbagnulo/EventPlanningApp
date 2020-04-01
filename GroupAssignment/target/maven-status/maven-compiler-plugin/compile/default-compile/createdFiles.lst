@@ -2,5 +2,6 @@ venuebrain/adminLoginController.class
 venuebrain/DatabaseManager.class
 venuebrain/App.class
 module-info.class
-venuebrain/Planet.class
+venuebrain/User.class
+venuebrain/Guest.class
 venuebrain/PrimaryController.class
