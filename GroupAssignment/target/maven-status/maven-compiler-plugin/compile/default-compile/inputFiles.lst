@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Natalie Chan\Documents\GitHub\infs2605-20t1-FlowMerrySpell\GroupAssignment\src\main\java\module-info.java
 C:\Users\Natalie Chan\Documents\GitHub\infs2605-20t1-FlowMerrySpell\GroupAssignment\src\main\java\venuebrain\User.java
 C:\Users\Natalie Chan\Documents\GitHub\infs2605-20t1-FlowMerrySpell\GroupAssignment\src\main\java\venuebrain\adminLoginController.java
@@ -5,3 +6,12 @@ C:\Users\Natalie Chan\Documents\GitHub\infs2605-20t1-FlowMerrySpell\GroupAssignm
 C:\Users\Natalie Chan\Documents\GitHub\infs2605-20t1-FlowMerrySpell\GroupAssignment\src\main\java\venuebrain\DatabaseManager.java
 C:\Users\Natalie Chan\Documents\GitHub\infs2605-20t1-FlowMerrySpell\GroupAssignment\src\main\java\venuebrain\App.java
 C:\Users\Natalie Chan\Documents\GitHub\infs2605-20t1-FlowMerrySpell\GroupAssignment\src\main\java\venuebrain\PrimaryController.java
+=======
+/Users/neilmatani/Documents/University/20t1/INFS2605/infs2605-20t1-FlowMerrySpell/GroupAssignment/src/main/java/venuebrain/Guest.java
+/Users/neilmatani/Documents/University/20t1/INFS2605/infs2605-20t1-FlowMerrySpell/GroupAssignment/src/main/java/venuebrain/adminLoginController.java
+/Users/neilmatani/Documents/University/20t1/INFS2605/infs2605-20t1-FlowMerrySpell/GroupAssignment/src/main/java/venuebrain/PrimaryController.java
+/Users/neilmatani/Documents/University/20t1/INFS2605/infs2605-20t1-FlowMerrySpell/GroupAssignment/src/main/java/venuebrain/DatabaseManager.java
+/Users/neilmatani/Documents/University/20t1/INFS2605/infs2605-20t1-FlowMerrySpell/GroupAssignment/src/main/java/module-info.java
+/Users/neilmatani/Documents/University/20t1/INFS2605/infs2605-20t1-FlowMerrySpell/GroupAssignment/src/main/java/venuebrain/User.java
+/Users/neilmatani/Documents/University/20t1/INFS2605/infs2605-20t1-FlowMerrySpell/GroupAssignment/src/main/java/venuebrain/App.java
+>>>>>>> c781e5e3e43964a3c1b0fff28ff3a6dcf80e6c68
