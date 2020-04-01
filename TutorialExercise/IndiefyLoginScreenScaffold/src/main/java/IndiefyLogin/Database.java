@@ -33,6 +33,7 @@ public class Database {
         
         // Assume that the user will enter incorrect credentials
         boolean loginSuccessful = false;
+        System.out.println(username + password);
         
         try {
             // Open the connection

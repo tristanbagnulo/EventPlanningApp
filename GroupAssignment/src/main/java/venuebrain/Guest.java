@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//test commit from shai
 package venuebrain;
 
 
@@ -16,6 +17,7 @@ public class Guest extends User{
         super(fName, lName);
     }
     
+    //Guest ID creation
     public String createGuestLoginID(String fName, String lName) {
         String newFName = removeSpecial(fName);
         String newLName = removeSpecial(lName);
@@ -26,10 +28,11 @@ public class Guest extends User{
         return resultStr;
     }
     
+    //removes special characters from string for Guest ID generation
     public String removeSpecial(String str){
         String resultStr = "";
         for(int i = 0; i < str.length(); i++){
-            if (str.charAt(i)>64 && str.charAt(i)<=122){
+            if (str.charAt(i) > 64 && str.charAt(i) <= 122){
                 resultStr = resultStr + str.charAt(i);
             }
         }

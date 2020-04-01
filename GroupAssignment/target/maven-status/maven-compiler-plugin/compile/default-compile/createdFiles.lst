@@ -1,7 +1,19 @@
 module-info.class
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0f204a0353bdb368e5528ffac084c629f800b99d
 venuebrain\App.class
 venuebrain\Guest.class
 venuebrain\User.class
 venuebrain\PrimaryController.class
 venuebrain\adminLoginController.class
 venuebrain\DatabaseManager.class
+<<<<<<< HEAD
+=======
+=======
+venuebrain/User.class
+venuebrain/Guest.class
+venuebrain/PrimaryController.class
+>>>>>>> c781e5e3e43964a3c1b0fff28ff3a6dcf80e6c68
+>>>>>>> 0f204a0353bdb368e5528ffac084c629f800b99d
