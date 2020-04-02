@@ -12,13 +12,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
  * @author Blair
  */
 public class DatabaseManager {
-    private static final String TABLE_NAME_FOR_PLANETS = "planets";
     private static Connection sharedConnection;
     
     /**
@@ -28,7 +28,7 @@ public class DatabaseManager {
     private static boolean openConnection() {
         boolean wasThisMethodSuccessful = false;
         try {
-            DatabaseManager.sharedConnection = DriverManager.getConnection("jdbc:sqlite:Planets.db");
+            DatabaseManager.sharedConnection = DriverManager.getConnection("jdbc:sqlite:Database.db");
             wasThisMethodSuccessful = true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class DatabaseManager {
         }
     }
     
-    private static boolean setupDummyData() {
+    /*private static boolean setupDummyData() {
         boolean wasThisMethodSuccessful = false;
         try {
             DatabaseManager.openConnection();
@@ -92,7 +92,7 @@ public class DatabaseManager {
             return wasThisMethodSuccessful;
         }
         
-    }
+    }*/
     
     public static boolean setupDatabaseOnFirstRun() {
         boolean wasThisMethodSuccessful = false;
@@ -123,6 +123,61 @@ public class DatabaseManager {
             return wasThisMethodSuccessful;
         }
     }
+    
+    public static boolean createSchema(){
+        // Initialise your Prepared Statement to create the tables
+       boolean methodSuccess = true;
+        ArrayList<String> insertTables = new ArrayList<String>();
+       
+        //Admin table
+        insertTables.add("CREATE TABLE admin"
+                + "(admin_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
+                + ", username TEXT NOT NULL"
+                + ", password TEXT NOT NULL"
+                + ", first_name TEXT"
+                + ", last_name TEXT"
+                + ")"
+        );
+        //guest table        
+        insertTables.add("CREATE TABLE guest"
+                + "(guest_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
+                + ", access_code INTEGER NOT NULL"
+                + ", email_address TEXT NOT NULL"
+                +", phone_number TEXT NOT NULL"
+                + ", first_name TEXT"
+                + ", last_name TEXT"
+                + ")"
+        );
+        //event table
+        insertTables.add("CREATE TABLE event"
+                + "(event_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
+                + ", event_name TEXT"
+                + ", location TEXT"
+                + ")"
+        );
+        //invitation table
+        insertTables.add("CREATE TABLE invitation"
+                + "(invitation_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
+                + ", event_id INTEGER FOREIGN KEY (event_id) REFERENCES event(event_id)"
+                + ", guest_id INTEGER FOREIGN KEY (guest_id) REFERENCES guest(guest_id)"
+                + ", admin_id INTEGER FOREIGN KEY (admin_id) REFERENCES admin(admin_id)"
+                + ", invitation_name TEXT"
+                + ", no_people INTEGER"
+                +")"
+        );
+        //rsvp table
+        insertTables.add("CREATE TABLE rsvp"
+                + "(rsvp_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
+                + ", invitation_id INTEGER FOREIGN KEY (invitation_id) REFERENCES invitation(invitation_id)"
+                + ", decision BOOLEAN NOT NULL"
+                + ", dietary_requirements TEXT NOT NULL"
+                + ", rsvp_datetime DATE NOT NULL"
+                + ")"
+        );
+       return methodSuccess; 
+    }
+        
+  
     
     /*public static Planet fetchPlanetByName(String planetName) {
         Planet preparedReturn = null;

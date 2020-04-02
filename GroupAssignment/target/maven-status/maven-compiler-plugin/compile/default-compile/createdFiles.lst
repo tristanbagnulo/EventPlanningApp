@@ -3,5 +3,3 @@ venuebrain\App.class
 venuebrain\Guest.class
 venuebrain\User.class
 venuebrain\PrimaryController.class
-venuebrain\adminLoginController.class
-venuebrain\DatabaseManager.class
