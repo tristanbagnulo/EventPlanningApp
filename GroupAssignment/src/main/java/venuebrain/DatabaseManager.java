@@ -12,13 +12,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
  * @author Blair
  */
 public class DatabaseManager {
-    private static final String TABLE_NAME_FOR_PLANETS = "planets";
     private static Connection sharedConnection;
     
     /**
@@ -28,7 +28,7 @@ public class DatabaseManager {
     private static boolean openConnection() {
         boolean wasThisMethodSuccessful = false;
         try {
-            DatabaseManager.sharedConnection = DriverManager.getConnection("jdbc:sqlite:Planets.db");
+            DatabaseManager.sharedConnection = DriverManager.getConnection("jdbc:sqlite:Database.db");
             wasThisMethodSuccessful = true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class DatabaseManager {
         }
     }
     
-    private static boolean setupDummyData() {
+    /*private static boolean setupDummyData() {
         boolean wasThisMethodSuccessful = false;
         try {
             DatabaseManager.openConnection();
@@ -92,7 +92,7 @@ public class DatabaseManager {
             return wasThisMethodSuccessful;
         }
         
-    }
+    }*/
     
     public static boolean setupDatabaseOnFirstRun() {
         boolean wasThisMethodSuccessful = false;
@@ -123,6 +123,23 @@ public class DatabaseManager {
             return wasThisMethodSuccessful;
         }
     }
+    
+    public static boolean createSchema(){
+        // Initialise your Prepared Statement to create the admin table
+       boolean methodSuccess = true;
+        ArrayList<String> insertTables = new ArrayList<String>();
+        insertTables.add("CREATE TABLE admin"
+                + "(admin_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
+                + ", username TEXT NOT NULL"
+                + ", password TEXT NOT NULL"
+                + ", first_name TEXT"
+                + ", last_name TEXT"
+                + ")"
+        );
+       return methodSuccess; 
+    }
+        
+  
     
     /*public static Planet fetchPlanetByName(String planetName) {
         Planet preparedReturn = null;
