@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Blair
+ * 
  */
 public class DatabaseManager {
     private static Connection sharedConnection;
@@ -49,7 +49,7 @@ public class DatabaseManager {
         }
     }
     
-    private static boolean createTheOnlyTableWeNeed() {
+   /* private static boolean createTheOnlyTableWeNeed() {
         boolean wasThisMethodSuccessful = false;
         try {
             DatabaseManager.openConnection();
@@ -65,7 +65,7 @@ public class DatabaseManager {
         } finally {
             return wasThisMethodSuccessful;
         }
-    }
+    }*/
     
     /*private static boolean setupDummyData() {
         boolean wasThisMethodSuccessful = false;
@@ -94,7 +94,7 @@ public class DatabaseManager {
         
     }*/
     
-    public static boolean setupDatabaseOnFirstRun() {
+/*  public static boolean setupDatabaseOnFirstRun() {
         boolean wasThisMethodSuccessful = false;
         try {
             // check if we need to setup database
@@ -122,59 +122,108 @@ public class DatabaseManager {
         } finally {
             return wasThisMethodSuccessful;
         }
-    }
+    }*/
     
-    public static boolean createSchema(){
-        // Initialise your Prepared Statement to create the tables
-       boolean methodSuccess = true;
-        ArrayList<String> insertTables = new ArrayList<String>();
-       
+    public static void createSchema() throws SQLException{
+        // Initialise statements to create the tables
+        
         //Admin table
-        insertTables.add("CREATE TABLE admin"
+        String createAdmin = "CREATE TABLE admin"
                 + "(admin_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
                 + ", username TEXT NOT NULL"
                 + ", password TEXT NOT NULL"
                 + ", first_name TEXT"
                 + ", last_name TEXT"
-                + ")"
-        );
+                + ")";
+        
         //guest table        
-        insertTables.add("CREATE TABLE guest"
+        String createGuest = "CREATE TABLE guest"
                 + "(guest_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
-                + ", access_code INTEGER NOT NULL"
+                + ", access_code TEXT NOT NULL"
                 + ", email_address TEXT NOT NULL"
                 +", phone_number TEXT NOT NULL"
                 + ", first_name TEXT"
                 + ", last_name TEXT"
-                + ")"
-        );
+                + ")";
+        
         //event table
-        insertTables.add("CREATE TABLE event"
+       String createEvent = "CREATE TABLE event"
                 + "(event_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
                 + ", event_name TEXT"
                 + ", location TEXT"
-                + ")"
-        );
+                + ")";
+       
         //invitation table
-        insertTables.add("CREATE TABLE invitation"
+        String createInvitation = "CREATE TABLE invitation"
                 + "(invitation_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
-                + ", event_id INTEGER FOREIGN KEY (event_id) REFERENCES event(event_id)"
-                + ", guest_id INTEGER FOREIGN KEY (guest_id) REFERENCES guest(guest_id)"
-                + ", admin_id INTEGER FOREIGN KEY (admin_id) REFERENCES admin(admin_id)"
-                + ", invitation_name TEXT"
+                + ", event_id INTEGER"
+                + ", guest_id INTEGER"
+                + ", admin_id INTEGER"
                 + ", no_people INTEGER"
-                +")"
-        );
+                + ", FOREIGN KEY (event_id) REFERENCES event(event_id)"
+                + ", FOREIGN KEY (guest_id) REFERENCES guest(guest_id)"
+                + ", FOREIGN KEY (admin_id) REFERENCES admin(admin_id)"
+                +")";
+        
         //rsvp table
-        insertTables.add("CREATE TABLE rsvp"
+        String createRSVP = "CREATE TABLE rsvp"
                 + "(rsvp_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
-                + ", invitation_id INTEGER FOREIGN KEY (invitation_id) REFERENCES invitation(invitation_id)"
-                + ", decision BOOLEAN NOT NULL"
-                + ", dietary_requirements TEXT NOT NULL"
+                + ", invitation_id INTEGER"
+                + ", accepted INTEGER NOT NULL"
+                + ", dietary_requirements TEXT"
                 + ", rsvp_datetime DATE NOT NULL"
-                + ")"
-        );
-       return methodSuccess; 
+                + ", FOREIGN KEY (invitation_id) REFERENCES invitation(invitation_id)"
+                + ")";
+        
+        ArrayList<String> checkTableNames = new ArrayList<String>();
+        checkTableNames.add("Admin");
+        checkTableNames.add("Guest");
+        checkTableNames.add("Event");
+        checkTableNames.add("Invitation");
+        checkTableNames.add("RSVP");
+        
+        openConnection();
+        DatabaseMetaData dbmd = DatabaseManager.sharedConnection.getMetaData();
+        Statement st = sharedConnection.createStatement();
+        
+        for (String tableName : checkTableNames){
+            System.out.println("Checking " + tableName + " table...");
+            try {
+                // Check if the Table exists
+               ResultSet rs = dbmd.getTables(null, null, tableName, null);
+                if (!rs.next()) {
+                    // create table if doesnt exist
+                    switch (tableName){
+                        case "Admin":
+                            st.execute(createAdmin);
+                            System.out.println("Admin table created");
+                            break;
+                        case "Guest":
+                            st.execute(createGuest);
+                            System.out.println("Guest table created");
+                            break;
+                        case "Event":
+                            st.execute(createEvent);
+                            System.out.println("Event table created");
+                            break;
+                        case "Invitation":
+                            st.execute(createInvitation);
+                            System.out.println("Invitation table created");
+                            break;
+                        case "RSVP":
+                            st.execute(createRSVP);
+                            System.out.println("RSVP table created");
+                            break;          
+                    }
+                } else {
+                    System.out.println(tableName + " table exists");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        DatabaseManager.closeConnection();
+        st.close();
     }
         
   
