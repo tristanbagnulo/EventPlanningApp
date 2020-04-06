@@ -11,20 +11,39 @@ import java.util.Random;
 
 public class Guest extends User{
     
-    private String uniqueLoginID;
+    private String accessCode;
+    private String email;
+    private String phoneNumber;
 
-    public Guest(String fName, String lName) {
+    public Guest(String fName, String lName, String email, String phoneNumber) {
         super(fName, lName);
     }
     
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    
     //Guest ID creation
-    public String createGuestLoginID(String fName, String lName) {
+    public String generateAccessCode(String fName, String lName) {
         String newFName = removeSpecial(fName);
         String newLName = removeSpecial(lName);
         Random rand = new Random();
         String randID = String.format("%04d", rand.nextInt(10000));
         String resultStr = newFName + newLName + randID;
-        this.uniqueLoginID = resultStr;
+        this.accessCode = resultStr;
         return resultStr;
     }
     
@@ -39,7 +58,7 @@ public class Guest extends User{
         return resultStr;
     }
     
-    public String getGuestLoginID() {
-        return uniqueLoginID;
+    public String getAccessCode() {
+        return accessCode;
     }
 }

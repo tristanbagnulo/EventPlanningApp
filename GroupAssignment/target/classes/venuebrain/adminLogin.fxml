@@ -7,8 +7,8 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="venuebrain.adminLoginController">
     <children>
-        <Label text="Secondary View" />
-        <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" />
+        <Label text="Admin Login - TBC" />
+        <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Test addNewGuest" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

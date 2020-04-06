@@ -1,6 +1,7 @@
 package venuebrain;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,20 +30,19 @@ public class guestLoginController {
     private void btnLoginClicked() throws IOException {
         System.out.println("Login Clicked");
         String enteredAccessCode = guestAccess.getText();
-        DatabaseManager.openConnection();
         if (DatabaseManager.fetchAccessCode(enteredAccessCode)){
             System.out.println("Correct Access Code");
             invalidCode.setVisible(false);
         }else {
             invalidCode.setVisible(true);
         }
-        DatabaseManager.closeConnection();
     }
     
     @FXML
-    private void btnBackWasClicked() throws IOException {
+    private void btnBackWasClicked() throws IOException, SQLException {
         
         App.setRoot("primary");
+
         
     }
     

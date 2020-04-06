@@ -228,6 +228,7 @@ public class DatabaseManager {
     
     public static boolean fetchAccessCode(String accessCode) {
         boolean accessCodeFound = false;
+        DatabaseManager.openConnection();
         try {
             String sqlString = "SELECT * FROM guest" 
                     + " WHERE access_code = ?";
@@ -237,11 +238,37 @@ public class DatabaseManager {
             if (rs.next()) {
                 accessCodeFound = true;
             }
-            //DatabaseManager.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
+            DatabaseManager.closeConnection();
             return accessCodeFound;
+        }
+    }
+    
+    public static boolean addNewGuest(String fName, String lName, String phoneNumber, String email) throws SQLException{
+        boolean addedGuest = false;
+        Guest newGuest = new Guest(fName, lName, phoneNumber, email);
+        String newAccessCode = newGuest.generateAccessCode(fName, lName);
+        DatabaseManager.openConnection();
+        Statement st = sharedConnection.createStatement();
+        try {
+            String insertQuery = "INSERT INTO guest (access_code, email_address, phone_number, first_name, last_name)"
+                    + "VALUES (?, ?, ?, ?, ?);";
+            PreparedStatement ps = sharedConnection.prepareStatement(insertQuery);
+            ps.setString(1, newAccessCode);
+            ps.setString(2, email);
+            ps.setString(3, phoneNumber);
+            ps.setString(4, fName);   
+            ps.setString(5, lName);
+            ps.executeUpdate();
+            addedGuest = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            st.close();
+            DatabaseManager.closeConnection();
+            return addedGuest;
         }
     }
         
