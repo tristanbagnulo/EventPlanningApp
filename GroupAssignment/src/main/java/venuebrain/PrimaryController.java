@@ -25,9 +25,9 @@ public class PrimaryController {
     }
     
     @FXML
-    private void btnGuestWasClicked() {
+    private void btnGuestWasClicked() throws IOException {
         
-        System.out.println("Guest login TBD");
+        App.setRoot("guestLogin");
         
     }
 }

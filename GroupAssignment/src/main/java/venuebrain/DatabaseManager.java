@@ -25,7 +25,7 @@ public class DatabaseManager {
      * This method is shared by all the `public static` methods in this class, to reuse the same code.
      * @return whether or not the connection was successfully opened
      */
-    private static boolean openConnection() {
+    public static boolean openConnection() {
         boolean wasThisMethodSuccessful = false;
         try {
             DatabaseManager.sharedConnection = DriverManager.getConnection("jdbc:sqlite:Database.db");
@@ -37,7 +37,7 @@ public class DatabaseManager {
         }
     }
     
-    private static boolean closeConnection() {
+    public static boolean closeConnection() {
         boolean wasThisMethodSuccessful = false;
         try {
             sharedConnection.close();
@@ -224,6 +224,25 @@ public class DatabaseManager {
         }
         DatabaseManager.closeConnection();
         st.close();
+    }
+    
+    public static boolean fetchAccessCode(String accessCode) {
+        boolean accessCodeFound = false;
+        try {
+            String sqlString = "SELECT * FROM guest" 
+                    + " WHERE access_code = ?";
+            PreparedStatement psmt = sharedConnection.prepareStatement(sqlString);
+            psmt.setString(1, accessCode);
+            ResultSet rs = psmt.executeQuery();
+            if (rs.next()) {
+                accessCodeFound = true;
+            }
+            //DatabaseManager.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return accessCodeFound;
+        }
     }
         
   
