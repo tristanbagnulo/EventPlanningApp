@@ -76,7 +76,7 @@ public class Admin extends User{
         }
     }
     
-    public void createAdminAccess (String username, String password){
-        
+    public String createAdminAccess (String username, String password){
+        return (username + password);
     }
 }
