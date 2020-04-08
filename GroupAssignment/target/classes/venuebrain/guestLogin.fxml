@@ -18,7 +18,7 @@
                   <Font size="50.0" />
                </font>
             </Label>
-            <Label layoutX="93.0" layoutY="217.0" text="Please enter your Guest Access Code:">
+            <Label layoutX="88.0" layoutY="215.0" text="Please enter your Guest Access Code:">
                <font>
                   <Font size="15.0" />
                </font>
