@@ -20,7 +20,7 @@ public class guestLoginController {
     
     @FXML
     Label invalidCode;
-    
+       
     @FXML
     protected void initialize() {
         invalidCode.setVisible(false);
@@ -42,8 +42,10 @@ public class guestLoginController {
     private void btnBackWasClicked() throws IOException, SQLException {
         
         App.setRoot("primary");
-
-        
     }
-    
+    @FXML
+    private void btnBackToGuestLogIn() throws IOException, SQLException {
+        
+        App.setRoot("guestLogin");
+    }
 }

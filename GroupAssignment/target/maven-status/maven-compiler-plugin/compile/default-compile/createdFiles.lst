@@ -1,8 +1,8 @@
-venuebrain/adminLoginController.class
-venuebrain/DatabaseManager.class
-venuebrain/guestLoginController.class
-venuebrain/App.class
 module-info.class
-venuebrain/User.class
-venuebrain/Guest.class
-venuebrain/PrimaryController.class
+venuebrain\App.class
+venuebrain\Guest.class
+venuebrain\User.class
+venuebrain\guestLoginController.class
+venuebrain\PrimaryController.class
+venuebrain\adminLoginController.class
+venuebrain\DatabaseManager.class
