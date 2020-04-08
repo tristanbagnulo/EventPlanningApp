@@ -10,7 +10,7 @@
 
 <VBox alignment="CENTER" prefHeight="480.0" prefWidth="640.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="venuebrain.guestLoginController">
    <children>
-      <AnchorPane prefHeight="517.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <AnchorPane VBox.vgrow="ALWAYS">
          <children>
             <HBox layoutX="346.0" layoutY="57.0" prefHeight="100.0" prefWidth="200.0" />
             <Label layoutX="63.0" layoutY="44.0" text="Venue Brain Guest Login">

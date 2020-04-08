@@ -14,22 +14,37 @@ import java.sql.SQLException;
  */
 public class App extends Application {
 
-    private static Scene scene;
+    static Scene loginScene;
+    static Scene dashboard;
+    
+    static Stage window;
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+        window = stage;
+        
+        setLoginRoot("primary");
         
         DatabaseManager.createSchema();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static void setLoginRoot(String fxml) throws IOException {
+        
+        loginScene = new Scene(loadFXML(fxml), 640, 480);
+        window.setScene(loginScene);
+        window.show();
+        loginScene.setRoot(loadFXML(fxml));   
+    }
+    
+     public static void setDashboardRoot(String fxml, double x, double y) throws IOException {
+        
+        dashboard = new Scene(loadFXML(fxml), x, y);
+        window.setScene(dashboard);
+        window.show();
+        dashboard.setRoot(loadFXML(fxml));
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
