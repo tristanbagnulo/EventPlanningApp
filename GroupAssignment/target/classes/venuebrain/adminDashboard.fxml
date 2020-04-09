@@ -17,7 +17,7 @@
                   <Font size="50.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="43.0" layoutY="410.0" mnemonicParsing="false" onAction="#btnBackToGuestLogIn" text="&lt;&lt; Back" />
+            <Button layoutX="43.0" layoutY="410.0" mnemonicParsing="false" text="&lt;&lt; Back" />
             <TableView layoutX="35.0" layoutY="95.0" prefHeight="291.0" prefWidth="260.0">
               <columns>
                 <TableColumn editable="false" prefWidth="120.5" text="Exitsting Events" />

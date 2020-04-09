@@ -9,11 +9,12 @@ import javafx.scene.control.TableView;
 
 //comment to help commit work
 //another
+//work work work
 
 public class adminDashboardController {
-     @FXML
-    // Initialise the TableView as FXML variables
-    TableView dashboard = new TableView();
+//     @FXML
+//    // Initialise the TableView as FXML variables
+//    TableView dashboard = new TableView();
    
     // Initialise the TableColumns as FXML variables
 //    @FXML
