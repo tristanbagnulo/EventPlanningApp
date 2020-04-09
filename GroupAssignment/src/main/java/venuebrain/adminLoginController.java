@@ -14,14 +14,15 @@ public class adminLoginController {
     private void switchToPrimary() throws IOException, SQLException {
         //App.setRoot("primary");
         
-         if(DatabaseManager.addNewGuest("T'est", "Guest", "4983247", "testguest@mail.com")){
+        //testing addNewGuest method
+         if(DatabaseManager.addNewGuest("T''est", "Guest", "testguest@mail.com", "04983247")){
             System.out.println("guest added");
         }
         
     }
       @FXML
     private void btnBackWasClicked() throws IOException, SQLException {
-        App.setRoot("primary");
+        App.setLoginRoot("primary");
 
         
     }

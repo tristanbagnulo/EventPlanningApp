@@ -17,6 +17,8 @@ public class Guest extends User{
 
     public Guest(String fName, String lName, String email, String phoneNumber) {
         super(fName, lName);
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
     
     public String getEmail() {
