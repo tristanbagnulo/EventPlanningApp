@@ -21,13 +21,13 @@ public class PrimaryController {
     
     @FXML
     private void switchToAdminLogin() throws IOException {
-        App.setRoot("adminLogin");
+        App.setLoginRoot("adminLogin");
     }
     
     @FXML
     private void btnGuestWasClicked() throws IOException {
         
-        App.setRoot("guestLogin");
+        App.setLoginRoot("guestLogin");
         
     }
 }

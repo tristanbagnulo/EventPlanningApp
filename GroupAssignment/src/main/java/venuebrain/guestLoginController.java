@@ -6,8 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class guestLoginController {
+    
+  private Stage stage;
   
     @FXML
     Button loginButton;
@@ -20,7 +23,7 @@ public class guestLoginController {
     
     @FXML
     Label invalidCode;
-       
+    
     @FXML
     protected void initialize() {
         invalidCode.setVisible(false);
@@ -33,6 +36,7 @@ public class guestLoginController {
         if (DatabaseManager.fetchAccessCode(enteredAccessCode)){
             System.out.println("Correct Access Code");
             invalidCode.setVisible(false);
+            App.setDashboardRoot("guestDashboard", 950, 640);
         }else {
             invalidCode.setVisible(true);
         }
@@ -41,11 +45,9 @@ public class guestLoginController {
     @FXML
     private void btnBackWasClicked() throws IOException, SQLException {
         
-        App.setRoot("primary");
-    }
-    @FXML
-    private void btnBackToGuestLogIn() throws IOException, SQLException {
+        App.setLoginRoot("primary");
+
         
-        App.setRoot("guestLogin");
     }
+    
 }
