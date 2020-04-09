@@ -13,22 +13,22 @@ public class User {
 
     public User(String fName, String lName) {
         this.fName = fName;
-        this.lName= fName;
+        this.lName= lName;
     }
 
-    public String getGuestFName() {
+    public String getFName() {
         return fName;
     }
 
-    public void setGuestFName(String fName) {
+    public void setFName(String fName) {
         this.fName = fName;
     }
     
-     public String getlName() {
+     public String getLName() {
         return lName;
     }
      
-    public void setGuestLName(String lName) {
+    public void setLName(String lName) {
         this.lName = lName;
     }
     

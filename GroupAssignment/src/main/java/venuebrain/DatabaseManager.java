@@ -142,8 +142,8 @@ public class DatabaseManager {
                 + ", access_code TEXT NOT NULL"
                 + ", email_address TEXT NOT NULL"
                 +", phone_number TEXT NOT NULL"
-                + ", first_name TEXT"
-                + ", last_name TEXT"
+                + ", first_name VARCHAR2(30)"
+                + ", last_name VARCHAR2(30)"
                 + ")";
         
         //event table
@@ -250,17 +250,22 @@ public class DatabaseManager {
         boolean addedGuest = false;
         Guest newGuest = new Guest(fName, lName, phoneNumber, email);
         String newAccessCode = newGuest.generateAccessCode(fName, lName);
+        System.out.println(newGuest.getFName());
+        System.out.println(newGuest.getLName());
+        System.out.println(newGuest.getEmail());
+        System.out.println(newGuest.getPhoneNumber());
+        System.out.println(newGuest.getAccessCode());
         DatabaseManager.openConnection();
         Statement st = sharedConnection.createStatement();
         try {
             String insertQuery = "INSERT INTO guest (access_code, email_address, phone_number, first_name, last_name)"
                     + "VALUES (?, ?, ?, ?, ?);";
             PreparedStatement ps = sharedConnection.prepareStatement(insertQuery);
-            ps.setString(1, newAccessCode);
-            ps.setString(2, email);
-            ps.setString(3, phoneNumber);
-            ps.setString(4, fName);   
-            ps.setString(5, lName);
+            ps.setString(1, newGuest.getAccessCode());
+            ps.setString(2, newGuest.getEmail());
+            ps.setString(3, newGuest.getPhoneNumber());
+            ps.setString(4, newGuest.getFName());   
+            ps.setString(5, newGuest.getLName());
             ps.executeUpdate();
             addedGuest = true;
         } catch (SQLException e) {
