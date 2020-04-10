@@ -12,18 +12,20 @@
    <children>
       <AnchorPane prefHeight="517.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="140.0" layoutY="14.0" text="Events invited to">
+            <Label layoutX="120.0" layoutY="14.0" text="Admin Dashboard">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="43.0" layoutY="410.0" mnemonicParsing="false" onAction="#btnBackToGuestLogIn" text="&lt;&lt; Back" />
-            <TableView layoutX="40.0" layoutY="93.0" prefHeight="295.0" prefWidth="559.0">
+            <Button layoutX="43.0" layoutY="410.0" mnemonicParsing="false" text="&lt;&lt; Back" />
+            <TableView layoutX="35.0" layoutY="95.0" prefHeight="291.0" prefWidth="260.0">
               <columns>
-                <TableColumn prefWidth="259.0" text="Invitations" />
-                <TableColumn prefWidth="299.0" text="Invited by" />
+                <TableColumn editable="false" prefWidth="120.5" text="Exitsting Events" />
+                <TableColumn prefWidth="141.5" text="Created by" />
               </columns>
             </TableView>
+            <Button layoutX="563.0" layoutY="323.0" mnemonicParsing="false" text="Create" />
+            <Button layoutX="563.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="Edit" />
          </children>
       </AnchorPane>
    </children>
