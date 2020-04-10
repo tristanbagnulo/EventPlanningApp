@@ -1,4 +1,5 @@
 venuebrain/Guest.class
+venuebrain/adminDashboardController.class
 venuebrain/PrimaryController.class
 venuebrain/adminLoginController.class
 venuebrain/DatabaseManager.class
@@ -7,5 +8,5 @@ venuebrain/App.class
 module-info.class
 venuebrain/User.class
 venuebrain/Admin.class
-venuebrain/guestDashboardController.class
+venuebrain/Event.class
 venuebrain/guestDashboardController.class

@@ -38,7 +38,7 @@ public class adminLoginController {
         if (DatabaseManager.checkAdminLogin(enteredUser, enteredPass)){
             System.out.println("Admin authentication was successful.");
             invalidLogin.setVisible(false);
-            //App.setDashboardRoot("guestDashboard", 950, 640);
+            App.setDashboardRoot("adminDashboard", 950, 640);
         }else {
             invalidLogin.setVisible(true);
         }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="venuebrain.PrimaryController">
+   <children>
+      <AnchorPane prefHeight="359.0" prefWidth="597.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox layoutX="346.0" layoutY="57.0" prefHeight="100.0" prefWidth="200.0" />
+            <Label layoutX="176.0" layoutY="38.0" prefHeight="38.0" prefWidth="249.0" text="About Venue Brain" textAlignment="CENTER">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="76.0" prefHeight="292.0" prefWidth="579.0" text="Copyright © 2020. We, the developers of this software application, declare that it is&#10;our work towards an assessment item submitted to fulfil the requirements of INFS2605&#10;(UNSW Sydney). We declare that it is our own work, except where acknowledged, and &#10;has not been submitted for academic credit elsewhere. We acknowledge that the assessor&#10;of this item may, for the purpose of assessing this item: Reproduce this assessment item and &#10;provide a copy to another member of the University; and/or, Communicate a copy of this assessment &#10;item to a plagiarism checking service (which may then retain a copy of the assessment item on its database &#10;for the purpose of future plagiarism checking). We certify that we have read and understood the UNSW&#10;University Rules in respect of Student Academic Misconduct.&#10;&#10;Developers:&#10;Neil Matani - z5162753&#10;Shai Cohen - z5209471&#10;Natalie Chan - z519687&#10;Tristan Bagnulo - " textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
