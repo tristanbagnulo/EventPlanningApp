@@ -6,4 +6,5 @@ venuebrain/guestLoginController.class
 venuebrain/App.class
 module-info.class
 venuebrain/User.class
+venuebrain/Admin.class
 venuebrain/guestDashboardController.class

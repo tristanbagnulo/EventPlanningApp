@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 
 public class guestLoginController {
     
-  private Stage stage;
   
     @FXML
     Button loginButton;

@@ -276,7 +276,27 @@ public class DatabaseManager {
             return addedGuest;
         }
     }
-        
+    public static boolean checkAdminLogin (String username, String password) throws SQLException{
+        DatabaseManager.openConnection();
+        boolean userAuthenticated = false;
+        try{
+          ResultSet rs;
+          String sqlString = "SELECT * FROM admin where username = ? AND password = ?";
+          PreparedStatement ps = sharedConnection.prepareStatement(sqlString);
+          ps.setString(1, username);
+          ps.setString(2, password);
+          rs = ps.executeQuery();
+          
+          if(rs.next()){
+            userAuthenticated = true;
+          }
+        }catch (SQLException e){
+            System.out.print("Admin user could not be authenticated");
+        }finally{
+            DatabaseManager.closeConnection();
+            return userAuthenticated;
+        }
+    }
   
     
     /*public static Planet fetchPlanetByName(String planetName) {

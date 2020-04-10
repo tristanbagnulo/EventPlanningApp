@@ -54,28 +54,6 @@ public class Admin extends User{
         this.password = password;
     }
     
-    public boolean checkUsername (String username){
-        PreparedStatement ps = null;
-        ResultSet rs;
-        boolean checkUsername = true;
-        String query = "SELECT * FROM admin where username = ?";
-        DatabaseManager.openConnection();
-        try{
-          ps.setString(1, username);
-          rs = ps.executeQuery();
-          
-          if(rs.next()){
-              checkUsername = false;
-          }
-        }catch (SQLException e){
-                  System.out.print("Username does not exist");
-                  }
-          finally{
-            DatabaseManager.closeConnection();
-            return checkUsername;
-        }
-    }
-    
     public String createAdminAccess (String username, String password){
         return (username + password);
     }
