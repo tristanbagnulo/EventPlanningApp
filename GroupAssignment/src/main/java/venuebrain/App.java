@@ -58,12 +58,9 @@ public class App extends Application {
     }
     
     public static void showAbout() throws IOException {
-       
         Stage aboutStage = new Stage();
         Scene aboutScene = null;
-        
         setNewWindow(aboutStage, aboutScene, "about", 600, 350);
-        
     }
 
     public static void main(String[] args) {
