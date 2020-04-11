@@ -322,6 +322,8 @@ public class DatabaseManager {
         }
     }
     
+    
+    
     /*public static Planet fetchPlanetByName(String planetName) {
         Planet preparedReturn = null;
         try {

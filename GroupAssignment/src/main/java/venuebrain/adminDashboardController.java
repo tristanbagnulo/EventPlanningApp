@@ -12,11 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
@@ -50,10 +52,22 @@ public class adminDashboardController{
     
     @FXML
     Button backButton;
+    
+    @FXML
+    Button createEvent;
+    
+    @FXML
+    TextField newEventName;
+    
+    @FXML
+    TextField newEventLocation;
+    
+    @FXML
+    Label invalidEvent;
      
     @FXML
 //    Initialise the TableView as FXML variables
-    TableView dashboard = new TableView();
+    TableView eventTable = new TableView();
    
 //    Initialise the TableColumns as FXML variables
     @FXML
@@ -64,10 +78,15 @@ public class adminDashboardController{
     
      @FXML
     public void initialize() {
-//     eventNameCol.setCellValueFactory(cellData -> cellData.getValue().getEventName());
-//     eventLocationCol.setCellValueFactory(cellData -> cellData.getValue().getLocation());
+        invalidEvent.setVisible(false);
+        createEvent.setVisible(false);
+        newEventName.setVisible(false);
+        newEventLocation.setVisible(false);
      
-      dashboard.setItems(getEventListData());
+        eventNameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableEventName());
+        eventLocationCol.setCellValueFactory(cellData -> cellData.getValue().getViewableLocation());
+     
+        eventTable.setItems(getEventListData());
     }
     
     private ObservableList<Event> getEventListData() {
@@ -83,7 +102,7 @@ public class adminDashboardController{
             while(rs.next()) {
                 eventListToReturn.add(
                   // create a new music object
-                    new Event(rs.getString("Name"), rs.getString("Location"))
+                    new Event(rs.getString("event_name"), rs.getString("location"))
                 );
             }
         } catch (SQLException ex) {
@@ -94,9 +113,42 @@ public class adminDashboardController{
        return FXCollections.observableArrayList(eventListToReturn);
     }
  
-     @FXML
+    @FXML
     private void showAbout() throws IOException, SQLException {
        App.showAbout();
+    }
+    
+    @FXML
+    private void createEventMenu() throws IOException, SQLException {
+       createEvent.setVisible(true);
+       newEventName.setVisible(true);
+       newEventLocation.setVisible(true);
+    }
+    
+    @FXML
+    private void createNewEventClicked() throws IOException, SQLException {
+       String enteredEventName = newEventName.getText();
+       String enteredLocation = newEventLocation.getText();
+       
+       if(enteredEventName.isEmpty() || enteredLocation.isEmpty()){
+           invalidEvent.setVisible(true);
+       }else{
+            DatabaseManager.addNewEvent(enteredEventName, enteredLocation);
+            eventTable.setItems(getEventListData());
+            newEventName.setText("");
+            newEventLocation.setText("");
+            createEvent.setVisible(false);
+            newEventName.setVisible(false);
+            newEventLocation.setVisible(false);
+       }
+    }
+    @FXML
+    private void editEventClicked() throws IOException, SQLException {
+       Event selectedEvent = (Event) eventTable.getSelectionModel().getSelectedItem();
+       
+       System.out.println(selectedEvent.getEventName());
+       System.out.println(selectedEvent.getLocation());
+        
     }
 
      @FXML

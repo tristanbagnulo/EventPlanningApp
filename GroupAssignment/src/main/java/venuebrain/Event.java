@@ -5,6 +5,9 @@
  */
 package venuebrain;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Event{
     
 //    private int event_id;
@@ -37,4 +40,15 @@ public class Event{
     public void setLocation (String location) {
         this.location = location;
     }
+    
+    public StringProperty getViewableEventName() {
+        StringProperty viewableEventName = new SimpleStringProperty(eventName);
+        return viewableEventName;
+    }
+    
+    public StringProperty getViewableLocation() {
+        StringProperty viewableLocation = new SimpleStringProperty(location);
+        return viewableLocation;
+    }
+
 }
