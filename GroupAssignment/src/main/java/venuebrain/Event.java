@@ -5,9 +5,9 @@
  */
 package venuebrain;
 
-
 public class Event{
     
+//    private int event_id;
     private String eventName;
     private String location;
 
@@ -15,7 +15,13 @@ public class Event{
         this.eventName = eventName;
         this.location = location;
     }
-    
+     
+//    public int getEvent_id(){
+//        return event_id;
+//    }
+//    public void setEvent_id(int event_id){
+//        this.event_id = event_id;
+//    }
     public String getEventName() {
         return eventName;
     }

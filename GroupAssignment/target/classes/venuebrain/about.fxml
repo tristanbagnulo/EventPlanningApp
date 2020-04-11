@@ -11,7 +11,7 @@
       <AnchorPane prefHeight="359.0" prefWidth="597.0" VBox.vgrow="ALWAYS">
          <children>
             <HBox layoutX="346.0" layoutY="57.0" prefHeight="100.0" prefWidth="200.0" />
-            <Label layoutX="176.0" layoutY="38.0" prefHeight="38.0" prefWidth="249.0" text="About Venue Brain" textAlignment="CENTER">
+            <Label layoutX="145.0" layoutY="34.0" prefHeight="46.0" prefWidth="310.0" text="About Venue Brain" textAlignment="CENTER">
                <font>
                   <Font size="31.0" />
                </font>
