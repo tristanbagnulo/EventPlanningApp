@@ -7,9 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-//comment to help commit work
-//another
-//work work work
 
 public class adminDashboardController {
 //     @FXML
