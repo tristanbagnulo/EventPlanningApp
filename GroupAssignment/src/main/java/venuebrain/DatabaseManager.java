@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * 
  */
 public class DatabaseManager {
-    private static Connection sharedConnection;
+    public static Connection sharedConnection;
     
     /**
      * This method is shared by all the `public static` methods in this class, to reuse the same code.
