@@ -276,8 +276,51 @@ public class DatabaseManager {
             return addedGuest;
         }
     }
-        
+    public static boolean checkAdminLogin (String username, String password) throws SQLException{
+        DatabaseManager.openConnection();
+        boolean userAuthenticated = false;
+        try{
+          ResultSet rs;
+          String sqlString = "SELECT * FROM admin where username = ? AND password = ?";
+          PreparedStatement ps = sharedConnection.prepareStatement(sqlString);
+          ps.setString(1, username);
+          ps.setString(2, password);
+          rs = ps.executeQuery();
+          
+          if(rs.next()){
+            userAuthenticated = true;
+          }
+        }catch (SQLException e){
+            System.out.print("Admin user could not be authenticated");
+        }finally{
+            DatabaseManager.closeConnection();
+            return userAuthenticated;
+        }
+    }
   
+    public static boolean addNewEvent(String eventName, String location) throws SQLException{
+        boolean addedEvent = false;
+        Event newEvent = new Event(eventName, location);
+        System.out.println(newEvent.getEventName());
+        System.out.println(newEvent.getLocation());
+        DatabaseManager.openConnection();
+        Statement st = sharedConnection.createStatement();
+        try {
+            String insertQuery = "INSERT INTO event (event_name, location)"
+                    + "VALUES (?, ?);";
+            PreparedStatement ps = sharedConnection.prepareStatement(insertQuery);
+            ps.setString(1, newEvent.getEventName());
+            ps.setString(2, newEvent.getLocation());
+            ps.executeUpdate();
+            addedEvent = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            st.close();
+            DatabaseManager.closeConnection();
+            return addedEvent;
+        }
+    }
     
     /*public static Planet fetchPlanetByName(String planetName) {
         Planet preparedReturn = null;
