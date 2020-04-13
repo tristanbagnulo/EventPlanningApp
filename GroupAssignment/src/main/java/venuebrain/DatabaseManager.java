@@ -297,7 +297,33 @@ public class DatabaseManager {
             return userAuthenticated;
         }
     }
+    
+    public static int getEventID (Event event) throws SQLException{
+        DatabaseManager.openConnection();
+        //boolean eventFound = false;
+        int eventID = 0;
+        try{
+          ResultSet rs;
+          String sqlString = "SELECT event_id FROM event where event_name = ? AND location = ?";
+          PreparedStatement ps = sharedConnection.prepareStatement(sqlString);
+          ps.setString(1, event.getEventName());
+          ps.setString(2, event.getLocation());
+          rs = ps.executeQuery();
+          
+          if(rs.next()){
+           eventID = rs.getInt(1);
+          }
+        }catch (SQLException e){
+            System.out.print("Event could not be found!");
+        }finally{
+            DatabaseManager.closeConnection();
+            return eventID;
+            //return eventFound;
+        }
+    }
   
+    
+    
     public static boolean addNewEvent(String eventName, String location) throws SQLException{
         boolean addedEvent = false;
         Event newEvent = new Event(eventName, location);

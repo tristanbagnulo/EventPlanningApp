@@ -18,6 +18,10 @@ public class Event{
         this.eventName = eventName;
         this.location = location;
     }
+
+    public Event() {
+        
+    }
      
 //    public int getEvent_id(){
 //        return event_id;

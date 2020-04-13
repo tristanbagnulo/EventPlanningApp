@@ -9,5 +9,6 @@ module-info.class
 venuebrain/User.class
 venuebrain/Admin.class
 venuebrain/Event.class
+venuebrain/editEventController.class
 venuebrain/Invitation.class
 venuebrain/guestDashboardController.class

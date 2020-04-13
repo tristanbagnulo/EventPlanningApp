@@ -9,7 +9,9 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +25,8 @@ import javafx.stage.Stage;
 
 
 public class adminDashboardController{
+    
+    
     @FXML
     MenuBar adminMenu;
     
@@ -67,7 +71,7 @@ public class adminDashboardController{
      
     @FXML
 //    Initialise the TableView as FXML variables
-    TableView eventTable = new TableView();
+    public TableView eventTable = new TableView();
    
 //    Initialise the TableColumns as FXML variables
     @FXML
@@ -143,13 +147,28 @@ public class adminDashboardController{
        }
     }
     @FXML
-    private void editEventClicked() throws IOException, SQLException {
-       Event selectedEvent = (Event) eventTable.getSelectionModel().getSelectedItem();
+    public void editEventClicked() throws IOException, SQLException {
+      
        
-       System.out.println(selectedEvent.getEventName());
-       System.out.println(selectedEvent.getLocation());
-        
+     // int selectedID = DatabaseManager.getEventID((Event) eventTable.getSelectionModel().getSelectedItem());
+     
+       FXMLLoader loader = new FXMLLoader();
+       loader.setLocation(getClass().getResource("editEvent.fxml"));
+       Parent tableViewParent = loader.load();
+       
+       Stage eventStage = new Stage();
+       Scene eventScene = new Scene(tableViewParent, 373, 580);
+       
+      // App.setNewWindow(eventStage, eventScene, "editEvent", 373, 580);
+       editEventController controller = loader.getController();
+       controller.initData((Event) eventTable.getSelectionModel().getSelectedItem());
+       
+        eventStage.setScene(eventScene);
+        eventStage.show();
+
     }
+    
+    
 
      @FXML
     private void btnBackWasClicked() throws IOException, SQLException {
