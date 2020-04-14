@@ -5,10 +5,13 @@
  */
 package venuebrain;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 
 public class User {
     
-    private String fName;
+    String fName;
     private String lName;
 
     public User(String fName, String lName) {
@@ -30,6 +33,16 @@ public class User {
      
     public void setLName(String lName) {
         this.lName = lName;
+    }
+    
+    public StringProperty getViewableFName() {
+        StringProperty viewableFName = new SimpleStringProperty(fName);
+        return viewableFName;
+    }
+    
+    public StringProperty getViewableLName() {
+        StringProperty viewableLName = new SimpleStringProperty(lName);
+        return viewableLName;
     }
     
 }

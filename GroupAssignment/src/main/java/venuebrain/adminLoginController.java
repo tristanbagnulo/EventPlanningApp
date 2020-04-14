@@ -50,9 +50,9 @@ public class adminLoginController {
         //App.setRoot("primary");
         
         //testing addNewGuest method
-         if(DatabaseManager.addNewGuest("T''est", "Guest", "testguest@mail.com", "04983247")){
+        /* if(DatabaseManager.addNewGuest("T''est", "Guest", "testguest@mail.com", "04983247")){
             System.out.println("guest added");
-        } 
+        } */
     }
     
       @FXML

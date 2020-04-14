@@ -68,6 +68,9 @@ public class adminDashboardController{
     
     @FXML
     Label invalidEvent;
+    
+    @FXML
+    Button guestManager;
      
     @FXML
 //    Initialise the TableView as FXML variables
@@ -174,6 +177,15 @@ public class adminDashboardController{
     private void btnBackWasClicked() throws IOException, SQLException {
         
         App.setLoginRoot("adminLogin");  
+    }
+    
+     @FXML
+    private void btnGuestManager() throws IOException, SQLException {
+        
+        Stage guestManagerStage = new Stage();
+        Scene guestManagerScene = null;
+        
+        App.setNewWindow(guestManagerStage, guestManagerScene, "guestManager", 678, 645);
     }
     
 

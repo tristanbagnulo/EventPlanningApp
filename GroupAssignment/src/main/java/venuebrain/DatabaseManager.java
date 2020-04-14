@@ -246,10 +246,10 @@ public class DatabaseManager {
         }
     }
     
-    public static boolean addNewGuest(String fName, String lName, String phoneNumber, String email) throws SQLException{
+    public static boolean addNewGuest(Guest newGuest) throws SQLException{
         boolean addedGuest = false;
-        Guest newGuest = new Guest(fName, lName, phoneNumber, email);
-        String newAccessCode = newGuest.generateAccessCode(fName, lName);
+        //Guest newGuest = new Guest(fName, lName, phoneNumber, email);
+        //String newAccessCode = newGuest.generateAccessCode(fName, lName);
         System.out.println(newGuest.getFName());
         System.out.println(newGuest.getLName());
         System.out.println(newGuest.getEmail());

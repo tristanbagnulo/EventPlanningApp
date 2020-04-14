@@ -8,6 +8,8 @@ package venuebrain;
 
 
 import java.util.Random;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Guest extends User{
     
@@ -20,6 +22,7 @@ public class Guest extends User{
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+
     
     public String getEmail() {
         return email;
@@ -36,6 +39,7 @@ public class Guest extends User{
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    
     
     
     //Guest ID creation
@@ -60,7 +64,28 @@ public class Guest extends User{
         return resultStr;
     }
     
+    //only for TableView
+    public void setAccessCode(String accessCode) {
+        this.accessCode = accessCode;
+    }
+    
     public String getAccessCode() {
         return accessCode;
     }
+    
+     public StringProperty getViewableAccessCode() {
+        StringProperty viewableAccessCode = new SimpleStringProperty(accessCode);
+        return viewableAccessCode;
+    }
+    
+    public StringProperty getViewableEmail() {
+        StringProperty viewableEmail = new SimpleStringProperty(email);
+        return viewableEmail;
+    }
+    
+    public StringProperty getViewablePhone() {
+        StringProperty viewablePhone = new SimpleStringProperty(phoneNumber);
+        return viewablePhone;
+    }
+   
 }
