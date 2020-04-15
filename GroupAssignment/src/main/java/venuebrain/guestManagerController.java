@@ -1,6 +1,7 @@
 package venuebrain;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import static venuebrain.DatabaseManager.sharedConnection;
 
 public class guestManagerController {
 
@@ -33,6 +35,9 @@ public class guestManagerController {
     
     @FXML
     Label invalidCreds;
+    
+    @FXML
+    Label noSelection;
     
     @FXML
     TextField firstNameTxt;
@@ -73,6 +78,7 @@ public class guestManagerController {
       
         invalidCreds.setVisible(false);
         addGuest.setVisible(false);
+        noSelection.setVisible(false);
         newAccessCodeLbl.setText("");
         
         guestfNameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableFName());
@@ -141,6 +147,22 @@ public class guestManagerController {
         newAccessCodeLbl.setText("");
         guestTable.setItems(getGuestListData());
         addGuest.setVisible(false);
+    }
+    
+    @FXML
+    private void btnDeleteGuest() throws IOException, SQLException {
+        
+        Guest deletedGuest = (Guest) guestTable.getSelectionModel().getSelectedItem();
+        //DatabaseManager.getGuestID(deletedGuest); -> working
+        
+       if(DatabaseManager.deleteGuest(deletedGuest)){
+            guestTable.setItems(getGuestListData());
+            System.out.println("Guest deleted!");
+            noSelection.setVisible(false);
+        }else{
+           noSelection.setVisible(true);
+            System.out.println("Guest was not deleted!");
+        }  
     }
     
     

@@ -321,6 +321,59 @@ public class DatabaseManager {
             //return eventFound;
         }
     }
+    
+    public static int getGuestID (Guest guest) throws SQLException{
+        DatabaseManager.openConnection();
+        //boolean eventFound = false;
+        Integer guestID = null;
+        try{
+          ResultSet rs;
+          String sqlString = "SELECT guest_id FROM guest WHERE access_code = ? AND first_name = ? AND last_name = ?";
+          PreparedStatement ps = sharedConnection.prepareStatement(sqlString);
+          ps.setString(1, guest.getAccessCode());
+          System.out.println(guest.getAccessCode());
+          ps.setString(2, guest.getFName());
+          System.out.println(guest.getFName());
+          ps.setString(3, guest.getLName());
+          System.out.println(guest.getLName());
+          rs = ps.executeQuery();
+          
+          if(rs.next()){
+          guestID = rs.getInt("guest_id");
+          }
+          System.out.println(guestID);
+        }catch (SQLException e){
+            System.out.println("Guest ID could not be found!");
+        }finally{
+            DatabaseManager.closeConnection();
+            return guestID;
+            //return eventFound;
+        }
+    }
+    
+    public static boolean deleteGuest (Guest guest) throws SQLException{
+        DatabaseManager.openConnection();
+        boolean guestDeleted = false;
+
+        try{
+            int deletedGuestID = DatabaseManager.getGuestID(guest);
+            System.out.println("Guest ID = " + deletedGuestID);
+            DatabaseManager.openConnection();
+            String deleteString = "DELETE FROM guest WHERE guest_id = ?";
+            PreparedStatement ps = sharedConnection.prepareStatement(deleteString);
+            ps.setInt(1, deletedGuestID);
+            ps.executeUpdate();
+            guestDeleted = true;
+        }catch (SQLException e){
+            System.out.println("Guest could not be found!");
+            System.out.println(e.getMessage());
+        }finally{
+            DatabaseManager.closeConnection();
+            return guestDeleted;
+            //return eventFound;
+        }
+    }
+  
   
     
     

@@ -34,7 +34,7 @@
             </TableView>
             <Label layoutX="312.0" layoutY="304.0" text="Current Guest List" />
             <Button fx:id="addGuest" layoutX="423.0" layoutY="221.0" mnemonicParsing="false" onAction="#btnAddGuest" text="Add Guest" />
-            <Button fx:id="deleteGuest" layoutX="36.0" layoutY="600.0" mnemonicParsing="false" text="Delete Guest" />
+            <Button fx:id="deleteGuest" layoutX="36.0" layoutY="600.0" mnemonicParsing="false" onAction="#btnDeleteGuest" text="Delete Guest" />
             <Label fx:id="newAccessCodeLbl" layoutX="252.0" layoutY="221.0" text="new Access Code" textFill="#00cd00">
                <font>
                   <Font name="System Bold Italic" size="21.0" />
@@ -45,6 +45,7 @@
             <TextField fx:id="phoneTxt" layoutX="253.0" layoutY="186.0" prefHeight="27.0" prefWidth="278.0" />
             <Label layoutX="168.0" layoutY="153.0" prefHeight="17.0" prefWidth="76.0" text="Guest Email:" />
             <Label layoutX="157.0" layoutY="191.0" prefHeight="0.0" prefWidth="98.0" text="Guest  Phone:" />
+            <Label fx:id="noSelection" layoutX="141.0" layoutY="605.0" text="No Guest was selected!" textFill="RED" />
          </children>
       </AnchorPane>
    </children>
