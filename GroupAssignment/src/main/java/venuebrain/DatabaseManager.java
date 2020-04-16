@@ -331,16 +331,17 @@ public class DatabaseManager {
           String sqlString = "SELECT guest_id FROM guest WHERE access_code = ? AND first_name = ? AND last_name = ?";
           PreparedStatement ps = sharedConnection.prepareStatement(sqlString);
           ps.setString(1, guest.getAccessCode());
-          System.out.println(guest.getAccessCode());
+
           ps.setString(2, guest.getFName());
-          System.out.println(guest.getFName());
+
           ps.setString(3, guest.getLName());
-          System.out.println(guest.getLName());
+
           rs = ps.executeQuery();
           
           if(rs.next()){
           guestID = rs.getInt("guest_id");
           }
+          System.out.println("Guest ID = " + guestID);
           System.out.println(guestID);
         }catch (SQLException e){
             System.out.println("Guest ID could not be found!");

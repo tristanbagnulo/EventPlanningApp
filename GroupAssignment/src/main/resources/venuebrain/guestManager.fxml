@@ -25,15 +25,15 @@
             <TextField fx:id="lastNameTxt" layoutX="253.0" layoutY="113.0" prefHeight="27.0" prefWidth="278.0" />
             <TableView fx:id="guestTable" layoutX="33.0" layoutY="333.0" prefHeight="241.0" prefWidth="610.0">
               <columns>
-                <TableColumn fx:id="guestfNameCol" prefWidth="114.0" text="First Name" />
-                <TableColumn fx:id="guestlNameCol" prefWidth="91.0" text="Last Name" />
-                  <TableColumn fx:id="guestACodeCol" prefWidth="127.0" text="Access Code" />
-                  <TableColumn fx:id="guestEmailCol" prefWidth="116.0" text="Email" />
-                  <TableColumn fx:id="guestPhoneCol" prefWidth="161.0" text="Phone Number" />
+                <TableColumn fx:id="guestfNameCol" onEditCommit="#editGuestFirst" prefWidth="114.0" text="First Name" />
+                <TableColumn fx:id="guestlNameCol" onEditCommit="#editGuestLast" prefWidth="91.0" text="Last Name" />
+                  <TableColumn fx:id="guestACodeCol" editable="false" prefWidth="127.0" text="Access Code" />
+                  <TableColumn fx:id="guestEmailCol" onEditCommit="#editGuestEmail" prefWidth="116.0" text="Email" />
+                  <TableColumn fx:id="guestPhoneCol" onEditCommit="#editGuestPhone" prefWidth="161.0" text="Phone Number" />
               </columns>
             </TableView>
             <Label layoutX="312.0" layoutY="304.0" text="Current Guest List" />
-            <Button fx:id="addGuest" layoutX="423.0" layoutY="221.0" mnemonicParsing="false" onAction="#btnAddGuest" text="Add Guest" />
+            <Button fx:id="addGuest" layoutX="455.0" layoutY="221.0" mnemonicParsing="false" onAction="#btnAddGuest" text="Add Guest" />
             <Button fx:id="deleteGuest" layoutX="36.0" layoutY="600.0" mnemonicParsing="false" onAction="#btnDeleteGuest" text="Delete Guest" />
             <Label fx:id="newAccessCodeLbl" layoutX="252.0" layoutY="221.0" text="new Access Code" textFill="#00cd00">
                <font>

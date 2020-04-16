@@ -18,7 +18,6 @@
                </font>
             </Label>
             <Button fx:id="backButton" layoutX="43.0" layoutY="410.0" mnemonicParsing="false" onAction="#btnBackWasClicked" text="&lt;&lt; Back" />
-              <Button layoutX="472.0" layoutY="410.0" onAction="#switchToPrimary" text="Test addNewGuest" />
             <Label layoutX="123.0" layoutY="186.0" text="Administrator Username:">
                <font>
                   <Font size="15.0" />
