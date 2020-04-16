@@ -108,7 +108,7 @@ public class adminDashboardController{
             
             while(rs.next()) {
                 eventListToReturn.add(
-                  // create a new music object
+                  // create a new event object
                     new Event(rs.getString("event_name"), rs.getString("location"))
                 );
             }
