@@ -35,6 +35,7 @@ public class guestLoginController {
         if (DatabaseManager.fetchAccessCode(enteredAccessCode)){
             System.out.println("Correct Access Code");
             invalidCode.setVisible(false);
+            
             App.setDashboardRoot("guestDashboard", 950, 640);
         }else {
             invalidCode.setVisible(true);

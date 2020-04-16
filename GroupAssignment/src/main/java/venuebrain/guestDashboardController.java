@@ -16,7 +16,8 @@ import javafx.stage.*;
 
 public class guestDashboardController {
   
-    
+    @FXML
+    Label welcomeUserlbl;
     
     @FXML
     Button logoutButton;
@@ -43,12 +44,14 @@ public class guestDashboardController {
     
      @FXML
     public void initialize() {
-     
+        
+        welcomeUserlbl.setText("Welcome " + App.getCurrentUser().getFName() + " !");
         nameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableEventName());
         locationCol.setCellValueFactory(cellData -> cellData.getValue().getViewableLocation());
        
         
-        date.setCellValueFactory(cellData -> cellData.getValue().getViewableDate());
+        //date.setCellValueFactory(cellData -> cellData.getValue().getViewableDate());
+        
 
      
         event.setItems(getEventListData());

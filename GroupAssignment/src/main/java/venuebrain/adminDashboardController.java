@@ -46,6 +46,9 @@ public class adminDashboardController{
     MenuItem editEvent;
     
     @FXML
+    MenuItem createInvitations;
+    
+    @FXML
     MenuItem deleteGuest;
     
     @FXML
@@ -70,6 +73,9 @@ public class adminDashboardController{
     Label invalidEvent;
     
     @FXML
+    Label welcomeUserlbl;
+    
+    @FXML
     Button guestManager;
      
     @FXML
@@ -85,6 +91,8 @@ public class adminDashboardController{
     
      @FXML
     public void initialize() {
+        
+        welcomeUserlbl.setText("Welcome " + App.getCurrentUser().getFName() + " !");
         invalidEvent.setVisible(false);
         createEvent.setVisible(false);
         newEventName.setVisible(false);
@@ -168,6 +176,28 @@ public class adminDashboardController{
        
         eventStage.setScene(eventScene);
         eventStage.show();
+
+    }
+    
+    @FXML
+    public void createInvitationsClicked() throws IOException, SQLException {
+      
+       
+     // int selectedID = DatabaseManager.getEventID((Event) eventTable.getSelectionModel().getSelectedItem());
+     
+       FXMLLoader loader = new FXMLLoader();
+       loader.setLocation(getClass().getResource("createInvitations.fxml"));
+       Parent tableViewParent = loader.load();
+       
+       Stage inviteStage = new Stage();
+       Scene inviteScene = new Scene(tableViewParent, 547, 580);
+       
+      // App.setNewWindow(eventStage, eventScene, "editEvent", 373, 580);
+       createInvitationsController controller = loader.getController();
+       controller.initData((Event) eventTable.getSelectionModel().getSelectedItem());
+       
+        inviteStage.setScene(inviteScene);
+        inviteStage.show();
 
     }
     

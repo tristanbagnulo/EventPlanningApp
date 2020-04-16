@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *
@@ -238,6 +239,10 @@ public class DatabaseManager {
             ResultSet rs = psmt.executeQuery();
             if (rs.next()) {
                 accessCodeFound = true;
+                Guest guestLoggedin = new Guest(rs.getString("first_name"), rs.getString("last_name"), rs.getString("email_address"), rs.getString("phone_number"));
+                guestLoggedin.setAccessCode(rs.getString("access_code"));
+                
+                App.setCurrentUser(guestLoggedin);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -290,6 +295,8 @@ public class DatabaseManager {
           
           if(rs.next()){
             userAuthenticated = true;
+            Admin adminLoggedin = new Admin(rs.getString("first_name"), rs.getString("last_name"), rs.getString("username"), rs.getString("password"));
+            App.setCurrentUser(adminLoggedin);
           }
         }catch (SQLException e){
             System.out.print("Admin user could not be authenticated");

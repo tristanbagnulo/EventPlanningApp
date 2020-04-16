@@ -18,6 +18,9 @@ public class App extends Application {
     static Scene dashboard;
     
     static Stage window;
+    
+    private static User currentUser;
+    
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
@@ -26,6 +29,14 @@ public class App extends Application {
         setLoginRoot("primary");
         
         DatabaseManager.createSchema();
+    }
+    
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+    
+    public static void setCurrentUser(User user) {
+        App.currentUser = user;
     }
 
     public static void setLoginRoot(String fxml) throws IOException {
