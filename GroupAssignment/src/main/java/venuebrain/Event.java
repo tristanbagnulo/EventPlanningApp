@@ -13,6 +13,7 @@ public class Event{
 //    private int event_id;
     private String eventName;
     private String location;
+    private String date_;
 
     public Event(String eventName, String location) {
         this.eventName = eventName;
@@ -45,6 +46,14 @@ public class Event{
         this.location = location;
     }
     
+    public String getDate(){
+        return date_;
+    }
+    
+    public void setDate(String date_){
+        this.date_ = date_;
+    }
+    
     public StringProperty getViewableEventName() {
         StringProperty viewableEventName = new SimpleStringProperty(eventName);
         return viewableEventName;
@@ -53,6 +62,11 @@ public class Event{
     public StringProperty getViewableLocation() {
         StringProperty viewableLocation = new SimpleStringProperty(location);
         return viewableLocation;
+    }
+     
+    public StringProperty getViewableDate() {
+        StringProperty viewableDate = new SimpleStringProperty(date_);
+        return viewableDate;
     }
 
 }

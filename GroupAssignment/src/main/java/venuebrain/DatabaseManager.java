@@ -151,6 +151,7 @@ public class DatabaseManager {
                 + "(event_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"
                 + ", event_name TEXT"
                 + ", location TEXT"
+                + ", date_ TEXT"
                 + ")";
        
         //invitation table
