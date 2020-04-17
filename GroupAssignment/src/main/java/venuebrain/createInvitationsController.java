@@ -15,6 +15,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class createInvitationsController {
   
@@ -29,6 +30,9 @@ public class createInvitationsController {
     
     @FXML
     Label eventLocationLbl;
+    
+    @FXML
+    Label invitesSent;
     
     
     @FXML
@@ -51,9 +55,13 @@ public class createInvitationsController {
     @FXML
     TableColumn<Guest, String> guestPhoneCol = new TableColumn<>("Phone Number");
     
+    Event selectedEvent;
+    
  
     @FXML
     public void initialize() throws IOException, SQLException {
+        
+        invitesSent.setVisible(false);
       
        guestfNameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableFName());
         guestlNameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableLName());
@@ -70,6 +78,8 @@ public class createInvitationsController {
        eventIDLbl.setText(Integer.toString(DatabaseManager.getEventID(event)));
        eventNameLbl.setText(event.getEventName());
        eventLocationLbl.setText(event.getLocation());
+       
+       selectedEvent = event;
    }
    
   private ObservableList<Guest> getGuestListData() {
@@ -97,6 +107,28 @@ public class createInvitationsController {
        return FXCollections.observableArrayList(guestListToReturn);
     }
     
+  @FXML
+    private void btnSendInvites() throws IOException, SQLException {
+        if (!guestTable.getSelectionModel().isEmpty()){
+            List<Guest> selectedGuests = guestTable.getSelectionModel().getSelectedItems();
+            for (Guest guest : selectedGuests){
+                Invitation newInvite = new Invitation(selectedEvent, guest, (Admin) App.getCurrentUser());
+                System.out.println(newInvite.getAdmin().getUsername());
+                System.out.println(newInvite.getAdmin().getPassword());
+                System.out.println(newInvite.getAdmin().getFName());
+                System.out.println(newInvite.getAdmin().getLName());
+                DatabaseManager.createNewInvite(newInvite);
+            }
+            invitesSent.setText("Invites Sent!");
+            invitesSent.setTextFill(Color.web("#1aff00"));
+            invitesSent.setVisible(true);
+        }else{
+            invitesSent.setText("No selected guests!");
+            invitesSent.setTextFill(Color.web("RED"));
+            invitesSent.setVisible(true);
+        }
+        
+    }
     
     
     /*@FXML

@@ -30,10 +30,11 @@
               </columns>
             </TableView>
             <Label layoutX="247.0" layoutY="236.0" text="All guests" />
-            <Button fx:id="sentInvites" layoutX="240.0" layoutY="531.0" mnemonicParsing="false" text="Send Invites" />
+            <Button fx:id="sentInvites" layoutX="240.0" layoutY="531.0" mnemonicParsing="false" onAction="#btnSendInvites" text="Send Invites" />
             <Label fx:id="eventIDLbl" layoutX="292.0" layoutY="90.0" text="eventID" />
             <Label fx:id="eventNameLbl" layoutX="292.0" layoutY="129.0" text="eventName" />
             <Label fx:id="eventLocationLbl" layoutX="292.0" layoutY="168.0" text="eventLocation" />
+            <Label fx:id="invitesSent" layoutX="341.0" layoutY="536.0" text="Label" textFill="#1aff00" />
          </children>
       </AnchorPane>
    </children>

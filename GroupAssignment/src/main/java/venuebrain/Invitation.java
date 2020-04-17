@@ -10,10 +10,12 @@ public class Invitation{
     
     private Event event;
     private Guest guest;
+    private Admin admin;
 
-    public Invitation(Event event, Guest guest){
+    public Invitation(Event event, Guest guest, Admin admin){
        this.event = event;
        this.guest = guest;
+       this.admin = admin;
     }
     
     public Invitation(){
@@ -34,5 +36,13 @@ public class Invitation{
     
     public void setGuest (Guest guest) {
         this.guest = guest;
+    }
+    
+    public Admin getAdmin() {
+        return admin;
+    }
+    
+    public void setAdmin (Admin admin) {
+        this.admin = admin;
     }
 }

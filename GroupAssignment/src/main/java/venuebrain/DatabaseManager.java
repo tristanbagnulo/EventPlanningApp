@@ -161,7 +161,6 @@ public class DatabaseManager {
                 + ", event_id INTEGER"
                 + ", guest_id INTEGER"
                 + ", admin_id INTEGER"
-                + ", no_people INTEGER"
                 + ", FOREIGN KEY (event_id) REFERENCES event(event_id)"
                 + ", FOREIGN KEY (guest_id) REFERENCES guest(guest_id)"
                 + ", FOREIGN KEY (admin_id) REFERENCES admin(admin_id)"
@@ -252,6 +251,32 @@ public class DatabaseManager {
         }
     }
     
+    
+    public static boolean createNewInvite(Invitation invite) throws SQLException{
+        boolean addedInvite = false;
+        
+        DatabaseManager.openConnection();
+        Statement st = sharedConnection.createStatement();
+        try {
+            String insertQuery = "INSERT INTO invitation (event_id, guest_id, admin_id)"
+                    + "VALUES (?, ?, ?);";
+            PreparedStatement ps = sharedConnection.prepareStatement(insertQuery);
+            ps.setInt(1, getEventID(invite.getEvent()));
+            ps.setInt(2, getGuestID(invite.getGuest()));
+            ps.setInt(3, getAdminID(invite.getAdmin()));
+            ps.executeUpdate();
+            addedInvite = true;
+            System.out.println(invite.getGuest().getAccessCode() + " has been invited to " + invite.getEvent().getEventName() + " by "
+            + invite.getAdmin().getUsername());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            st.close();
+            DatabaseManager.closeConnection();
+            return addedInvite;
+        }
+    }
+    
     public static boolean addNewGuest(Guest newGuest) throws SQLException{
         boolean addedGuest = false;
         //Guest newGuest = new Guest(fName, lName, phoneNumber, email);
@@ -282,6 +307,32 @@ public class DatabaseManager {
             return addedGuest;
         }
     }
+    
+    public static boolean addNewEvent(String eventName, String location) throws SQLException{
+        boolean addedEvent = false;
+        Event newEvent = new Event(eventName, location);
+        System.out.println(newEvent.getEventName());
+        System.out.println(newEvent.getLocation());
+        DatabaseManager.openConnection();
+        Statement st = sharedConnection.createStatement();
+        try {
+            String insertQuery = "INSERT INTO event (event_name, location)"
+                    + "VALUES (?, ?);";
+            PreparedStatement ps = sharedConnection.prepareStatement(insertQuery);
+            ps.setString(1, newEvent.getEventName());
+            ps.setString(2, newEvent.getLocation());
+            ps.executeUpdate();
+            addedEvent = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            st.close();
+            DatabaseManager.closeConnection();
+            return addedEvent;
+        }
+    }
+    
+    
     public static boolean checkAdminLogin (String username, String password) throws SQLException{
         DatabaseManager.openConnection();
         boolean userAuthenticated = false;
@@ -330,7 +381,7 @@ public class DatabaseManager {
         }
     }
     
-    public static int getGuestID (Guest guest) throws SQLException{
+public static int getGuestID (Guest guest) throws SQLException{
         DatabaseManager.openConnection();
         //boolean eventFound = false;
         Integer guestID = null;
@@ -350,12 +401,39 @@ public class DatabaseManager {
           guestID = rs.getInt("guest_id");
           }
           System.out.println("Guest ID = " + guestID);
-          System.out.println(guestID);
         }catch (SQLException e){
             System.out.println("Guest ID could not be found!");
         }finally{
             DatabaseManager.closeConnection();
             return guestID;
+            //return eventFound;
+        }
+    }
+    
+    public static int getAdminID (Admin admin) throws SQLException{
+        DatabaseManager.openConnection();
+        Integer adminID = null;
+        try{
+          ResultSet rs;
+          String sqlString = "SELECT admin_id FROM admin WHERE username = ? AND password = ? "
+                  + "AND first_name = ? AND last_name = ?";
+          PreparedStatement ps = sharedConnection.prepareStatement(sqlString);
+          ps.setString(1, admin.getUsername());
+          ps.setString(2, admin.getPassword());
+          ps.setString(3, admin.getFName());
+          ps.setString(4, admin.getLName());
+
+          rs = ps.executeQuery();
+          
+          if(rs.next()){
+            adminID = rs.getInt("admin_id");
+          }
+          System.out.println("Admin ID = " + adminID);
+        }catch (SQLException e){
+            System.out.println("Admin ID could not be found!");
+        }finally{
+            DatabaseManager.closeConnection();
+            return adminID;
             //return eventFound;
         }
     }
@@ -382,35 +460,6 @@ public class DatabaseManager {
             //return eventFound;
         }
     }
-  
-  
-    
-    
-    public static boolean addNewEvent(String eventName, String location) throws SQLException{
-        boolean addedEvent = false;
-        Event newEvent = new Event(eventName, location);
-        System.out.println(newEvent.getEventName());
-        System.out.println(newEvent.getLocation());
-        DatabaseManager.openConnection();
-        Statement st = sharedConnection.createStatement();
-        try {
-            String insertQuery = "INSERT INTO event (event_name, location)"
-                    + "VALUES (?, ?);";
-            PreparedStatement ps = sharedConnection.prepareStatement(insertQuery);
-            ps.setString(1, newEvent.getEventName());
-            ps.setString(2, newEvent.getLocation());
-            ps.executeUpdate();
-            addedEvent = true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            st.close();
-            DatabaseManager.closeConnection();
-            return addedEvent;
-        }
-    }
-    
-    
     
     /*public static Planet fetchPlanetByName(String planetName) {
         Planet preparedReturn = null;
