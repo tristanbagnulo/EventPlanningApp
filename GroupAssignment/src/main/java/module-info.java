@@ -7,6 +7,7 @@ module venuebrain {
     requires javafx.controls;
     requires javafx.graphicsEmpty;
     requires javafx.graphics;
+	requires itextpdf;
     
     requires java.sql;
 
