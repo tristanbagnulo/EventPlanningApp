@@ -20,4 +20,6 @@ admin | Password
 
 
 When inside you will be able to see the following screen which displays all of the events in the 
-database. It displays their Name and their Location.
+database. It displays their Name and their Location. You should see something like this...
+
+![](images/adminLoginLandingpage_EventsTable.JPG)
