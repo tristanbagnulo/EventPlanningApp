@@ -23,3 +23,7 @@ When inside you will be able to see the following screen which displays all of t
 database. It displays their Name and their Location. You should see something like this...
 
 ![](images/adminLoginLandingpage_EventsTable.JPG)
+
+Now let's go through how to use the Administrator functions.
+
+### <ins>Adding</ins> and <ins>Viewing</ins> `Guest`s
