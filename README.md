@@ -27,3 +27,21 @@ database. It displays their Name and their Location. You should see something li
 Now let's go through how to use the Administrator functions.
 
 ### <ins>Adding</ins> and <ins>Viewing</ins> `Guest`s
+
+From the Administrator Dashboard, click the Guest Manager Button at the bottom-right side of the screen.
+This opens a new window within you can view the Current Guest List to see all guest currently in the 
+database and add new guests to that database.
+
+To add new guests enter the 4 credentials required in the fields at the top of the page (Guest First Name,
+ Guest Last Name, Guest Email and Guest Phone). then click the "Generate Access Code" button.
+
+This will then display the automatically generated access code for this new guest. 
+
+To finish adding the guest. Click the "Add Guest" button which appears.
+
+You should now see the new guest details appear in the Current Guest List below.
+
+### <Removing> a `Guest`.
+
+Simply select the guest you wish to delete and click the "Delete Guest" button at the bottom of the 
+screen.
