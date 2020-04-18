@@ -45,3 +45,23 @@ You should now see the new guest details appear in the Current Guest List below.
 
 Simply select the guest you wish to delete and click the "Delete Guest" button at the bottom of the 
 screen.
+
+### <ins>Adding</ins> a new `Event`.
+
+From the Administrator Dashboard click New and the top-left corner of the screen > Event.
+
+Fields to enter the event details will appear below the events table. They are Name and Location .
+
+Add theses credentials then click the botton titles "Add New Event".
+
+The event will now appear on events table right above. 
+
+### <ins>Editing</ins> an `Event`
+
+Select the event you wish to edit. It will now be highlighted in blue. 
+
+Select "Edit" next to "New". A new window titled "Edit Event" will appear.
+
+Here you can change the Event Name and Event location by simply clicking in the field and typing.
+
+You can also guests !!!! PENDING IMPLEMENTATION OF PROGRAMMING.
