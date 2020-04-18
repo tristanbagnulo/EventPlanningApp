@@ -62,11 +62,11 @@ public class editEventController {
     @FXML
     public void initialize() throws IOException, SQLException {
       
-       guestfNameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableFName());
+       /* guestfNameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableFName());
         guestlNameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableLName());
         guestACodeCol.setCellValueFactory(cellData -> cellData.getValue().getViewableAccessCode());
         
-        guestTable.setItems(getGuestListData());
+        guestTable.setItems(getGuestListData());*/
   
         
     }
@@ -81,25 +81,26 @@ public class editEventController {
         
    }
    
-             //Get the guest list from the database
+  /*private ObservableList<Guest> getGuestListData() throws SQLException {
+        List<Guest> guestListToReturn = new ArrayList<>();
+        int selectedEventID = DatabaseManager.getEventID(selectedEvent);
+        DatabaseManager.openConnection();
+        try {
+            
+            // Get the guest list from the database
 //            String guestListQuery = "﻿SELECT g.guest_id, g.access_code, g.first_name, g.last_name, "
 //                    + "g.email_address, g.phone_number, i.event_id, i.guest_id "
 //                    + "﻿FROM guest g "
 //                    + "﻿INNER JOIN invitation i "
 //                    + "﻿ON g.guest_id = i.guest_id "
 //                    + "﻿WHERE i.event_id = ?";
-   
-  private ObservableList<Guest> getGuestListData() throws SQLException {
-        List<Guest> guestListToReturn = new ArrayList<>();
-        int selectedEventID = DatabaseManager.getEventID(selectedEvent);
-        DatabaseManager.openConnection();
-        try {
-            String guestListQuery = "﻿SELECT g.first_name, g.last_name, g.access_code, g.email_address, g.phone_number FROM guest g"
+
+            String guestListQuery = "﻿SELECT * FROM guest g"
                     + "INNER JOIN invitation i ON g.guest_id = i.guest_id WHERE i.event_id = ?;";
             ResultSet rs;
             PreparedStatement ps = DatabaseManager.sharedConnection.prepareStatement(guestListQuery);
             ps.setInt(1, selectedEventID);
-            rs = ps.getResultSet();
+            rs = ps.executeQuery();
             while(rs.next()) {
                 Guest listGuest = new Guest(rs.getString("first_name"), rs.getString("last_name"), 
                         rs.getString("email_address"), rs.getString("phone_number"));
@@ -117,7 +118,7 @@ public class editEventController {
         
        
        return FXCollections.observableArrayList(guestListToReturn);
-    }
+    }*/
     
     
     
