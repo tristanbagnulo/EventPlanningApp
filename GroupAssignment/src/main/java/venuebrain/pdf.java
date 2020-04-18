@@ -17,15 +17,14 @@ import java.io.FileOutputStream;
  */
 public class pdf {
    
-    
+    public static void testPDF(){
        try{
        Document document = new Document();
        PdfWriter.getInstance(document, new FileOutputStream("iTextHelloWorld.pdf"));
 
-       
-       document.add(new Paragraph("Please Print please please test test"));
-       
        document.open();
+       document.add(new Paragraph("Please Print please please test test"));
+      
        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
        Chunk chunk = new Chunk("Hello World", font);
 
@@ -35,5 +34,6 @@ public class pdf {
            System.out.println(e);
        }
        System.out.println("itext executed");
+    }
     
 }

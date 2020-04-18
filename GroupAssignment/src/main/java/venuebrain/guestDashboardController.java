@@ -21,6 +21,9 @@ public class guestDashboardController {
     
     @FXML
     Button logoutButton;
+    
+    @FXML
+    Button printInvite;
    
 
  @FXML
@@ -86,6 +89,13 @@ public class guestDashboardController {
     private void btnLogoutWasClicked() throws IOException {
         
         App.setLoginRoot("primary");
+        
+    }
+    
+    @FXML
+    private void btnPrintInvite() throws IOException {
+        
+        pdf.testPDF();
         
     }
 

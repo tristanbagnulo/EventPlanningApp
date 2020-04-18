@@ -11,6 +11,7 @@ venuebrain/editEventController.class
 venuebrain/guestDashboardController.class
 venuebrain/PrimaryController.class
 venuebrain/pdf.class
+venuebrain/rsvp.class
 venuebrain/DatabaseManager.class
 venuebrain/guestLoginController.class
 venuebrain/Event.class
