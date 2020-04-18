@@ -8,7 +8,7 @@ Clean and Build the application then Run it.
 
 Now you should see the opening screen. Let the instructions begin...
 
-## Instructions for Administr
+## Instructions for Administrator
 
 To gain administrator access click the "Administrator Login" button to the right.
 
@@ -17,3 +17,7 @@ Login using the administrator credentials below:
 Administrator Login | Administrator Password
 -------------------- | -----------------------
 admin | Password
+
+
+When inside you will be able to see the following screen which displays all of the events in the 
+database. It displays their Name and their Location.
