@@ -5,8 +5,8 @@ using the version control software, GitHub.
 
 ## Task allocation
 
-Soon after the assignment task was sent out our team had a group call. Niel took responsibility for managing the project
-and created a Trello page for us each to follow.
+Soon after the assignment task was sent out our team had a group call. During this group call we created a Trello page for us 
+each to follow to see our deliverables.
 
 Additionally, we scheduled group meetings across a few weeks and used out excess time during tutorials to discuss the project.
 
