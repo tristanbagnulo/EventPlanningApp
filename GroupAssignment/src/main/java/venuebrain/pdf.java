@@ -16,8 +16,7 @@ import java.io.FileOutputStream;
  * @author Shai C
  */
 public class pdf {
-    
-    public static void testPDF(){
+   
     
        try{
        Document document = new Document();
@@ -36,5 +35,5 @@ public class pdf {
            System.out.println(e);
        }
        System.out.println("itext executed");
-    }
+    
 }
