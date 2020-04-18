@@ -45,7 +45,7 @@ public class guestDashboardController {
      @FXML
     public void initialize() {
         
-        welcomeUserlbl.setText("Welcome " + App.getCurrentUser().getFName() + " !");
+        welcomeUserlbl.setText("Welcome " + App.getCurrentUser().getFName() + "!");
         nameCol.setCellValueFactory(cellData -> cellData.getValue().getViewableEventName());
         locationCol.setCellValueFactory(cellData -> cellData.getValue().getViewableLocation());
        
