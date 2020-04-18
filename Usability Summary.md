@@ -14,5 +14,5 @@ Nielsen's (1994) 10 heuristics for software design.
 | 7 | Recognition rather than recall | The functions on our application are quite intuitive and can easily be seen. There are only a few bottons (no more than 4) and a few fields for the user to interact with on each page. The buttons have titles that are intuitive and the fields have descriptions to tell the user what to place within them. |
 | 8 | Flexibility and efficiency of use | This is demonstrated in our app where an Administrator can send invitation to multiple guests at once. |
 | 9 | Help and documentation | We make our copyright information readily available. It can be accessed from the Dashboards of our users in Help > About. |
-| 10 | Help users recognize, diagnose and recover from errors | When a guest or admin tries to login with invalid credentials they receive the error message below. ![](adminLogin_UsernameOrPasswordInvalid.JPG) |
+| 10 | Help users recognize, diagnose and recover from errors | When a guest or admin tries to login with invalid credentials they receive the error message below. ![](images/adminLogin_UsernameOrPasswordInvalid.JPG) |
 	
