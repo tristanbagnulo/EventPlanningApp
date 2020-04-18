@@ -14,7 +14,7 @@ To gain administrator access click the "Administrator Login" button to the right
 
 Login using the administrator credentials below:
 
-Administrator Username | Administrator Password
+Administrator Login | Administrator Password
 -------------------- | -----------------------
 admin | Password
 
@@ -82,17 +82,6 @@ some small green text.
 
 To login from the Application's home page, click Guest Login and enter your guest Access Code in 
 the field on the Venue Brain Guest Login page. Click the "Login" button. 
-
-Here are some sample login credentails
-
-Guest Access Code |
--------------------- | 
-BarackObama5637 |
-CodyKo7558 |
-NeilMatani8724 |
-TrumpSucks6951 |
-YourMum5892 |
-JimSlim5894 |
 
 You will new see the Guest Landing page titled, "Guest Dashboard"
 
