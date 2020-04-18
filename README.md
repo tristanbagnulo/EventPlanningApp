@@ -8,7 +8,7 @@ Clean and Build the application then Run it.
 
 Now you should see the opening screen. Let the instructions begin...
 
-## Instructions for Administrator
+## Instructions for Administrators
 
 To gain administrator access click the "Administrator Login" button to the right.
 
@@ -64,4 +64,38 @@ Select "Edit" next to "New". A new window titled "Edit Event" will appear.
 
 Here you can change the Event Name and Event location by simply clicking in the field and typing.
 
-You can also guests !!!! PENDING IMPLEMENTATION OF PROGRAMMING.
+### <ins>Creating</ins> `Invitation`s to be sent to `Guest`s
+
+From the Administrator Dashboard click Edit > Create Invitations. A new page titled Create Invites
+ will appear.
+
+This page features a list of all the guests in the application's database. 
+
+To invite 1 guest click that guest and click "Send Invites". Some small green text will then
+appear saying "Invites Sent!". 
+
+To invite multiple guests at once click hold Ctrl (or Command for Mac) and click the guests you wish 
+to send invitations to simultaneously. Once you have your selection click Send Invites. Again, 
+some small green text.
+
+## Instructions for Guests
+
+To login from the Application's home page, click Guest Login and enter your guest Access Code in 
+the field on the Venue Brain Guest Login page. Click the "Login" button. 
+
+You will new see the Guest Landing page titled, "Guest Dashboard"
+
+It features a table which lists the details of the events they are invited to and some information 
+about them (Events Invited [the event's name], Location, Date and RSVP Status [whether
+or not they RSVPed to attend the event]) and two buttons titled "RSVP" and "Print Invitation".
+
+Let's get into what guests can do and how they do it.
+
+### Accepting or Declining invitations via an RSVP and adding notes.
+
+!!!! NOT YET ADDED. 
+
+### Printing an Invitation to a PDF
+
+!!! NOT YET ADDED.
+
