@@ -41,7 +41,7 @@ To finish adding the guest. Click the "Add Guest" button which appears.
 
 You should now see the new guest details appear in the Current Guest List below.
 
-### <Removing> a `Guest`.
+### <ins>Removing</ins> a `Guest`.
 
 Simply select the guest you wish to delete and click the "Delete Guest" button at the bottom of the 
 screen.
