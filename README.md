@@ -15,5 +15,5 @@ To gain administrator access click the "Administrator Login" button to the right
 Login using the administrator credentials below:
 
 Administrator Login | Administrator Password
---------------------|-----------------------
+-------------------- | -----------------------
 admin | Password
