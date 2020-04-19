@@ -29,19 +29,31 @@ import javafx.stage.Stage;
  *
  * @author Natalie Chan
  */
-
+        
 
 public class createPieChart extends Application{
+    
+    //Count for Accepted RSVP
+   int countAccepted;
    
-    @Override
+   //Count for Rejected RSVP
+   int countRejected;
+   
+   //Count for Pending RSVP
+   int countPending;
+   
+   
     public void initialize() throws IOException, SQLException {
-      public void start (Stage stage){
+        
+    @Override
+       public void start (Stage stage){
+        
         //ObservableList Object prepared
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-              new PieChart.Data ("Accepted", acceptedCount),
-              new PieChart.Data("Declined", declinedCount),
-              new PieCHart.Data("Pending", pendingCount))
-              
+              new PieChart.Data ("Accepted", countAccepted),
+              new PieChart.Data("Declined", countRejected));
+              new PieChart.Data("Declined", countPending)); 
+        
              //Creating PieChart Object
               PieChart pieChart = new PieChart (pieChartData);
               
@@ -77,8 +89,46 @@ public class createPieChart extends Application{
   
         
     }
- //Launch Application
+    }
+    //Launch Application
      public static void main (String args[]){
          launch(args);
      }
-}
+     
+     
+    public static int countAccepted () throws SQLException{
+
+        try{
+            
+            //Get accepted (int) from database
+            DatabaseManager.openConnection();
+            
+            //Query for taking RSVP accepted for the event from the Database            
+            String acceptedQuery = "SELECT accepted FROM rsvp;Join invitation using invitation_id where event_id = ?";
+            Statement st = DatabaseManager.sharedConnection.createStatement();
+            ResultSet rs = st.executeQuery(acceptedQuery);
+            
+            if(rs.next()) {
+                if (accepted == 1)
+            {
+                //Counting RSVP Accepted
+                countAccepted++;
+            } else if (accepted == 2)
+            {
+                //Counting RSVP Rejected
+                countRejected++;
+            } else (accepted == 3)
+            {
+                //Count RSVP Pending
+                countPending++;
+            }            
+        }
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+  
+    }
+    
+ 
