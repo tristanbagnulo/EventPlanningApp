@@ -71,6 +71,7 @@ public class createInvitationsController {
         
         guestTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         guestTable.setItems(getGuestListData());
+        
     }
     
    public void initData(Event event) throws SQLException{
