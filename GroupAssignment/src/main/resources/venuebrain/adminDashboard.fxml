@@ -37,14 +37,14 @@
                       <Menu fx:id="newMenu" mnemonicParsing="false" text="New">
                         <items>
                           <MenuItem fx:id="newEvent" mnemonicParsing="false" onAction="#createEventMenu" text="New Event" />
-                              <MenuItem fx:id="newGuest" mnemonicParsing="false" text="New Guest" />
+                              <MenuItem fx:id="newGuest" mnemonicParsing="false" onAction="#btnGuestManager" text="New Guest" />
                         </items>
                       </Menu>
                       <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
                         <items>
                           <MenuItem fx:id="createInvitations" mnemonicParsing="false" onAction="#createInvitationsClicked" text="Create Invitations" />
                               <MenuItem fx:id="editEvent1" mnemonicParsing="false" onAction="#editEventClicked" text="Edit Event" />
-                              <MenuItem fx:id="deleteGuest" mnemonicParsing="false" text="Edit/Delete Guest" />
+                              <MenuItem fx:id="deleteGuest" mnemonicParsing="false" onAction="#btnGuestManager" text="Edit/Delete Guest" />
                         </items>
                       </Menu>
                       <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
@@ -65,6 +65,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
+            <Button fx:id="refresh" layoutX="131.0" layoutY="130.0" mnemonicParsing="false" onAction="#refreshTable" text="Refresh" />
          </children>
       </AnchorPane>
    </children>

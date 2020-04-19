@@ -31,9 +31,10 @@
               </columns>
             </TableView>
             <Label layoutX="148.0" layoutY="238.0" text="Invited Guests" />
-            <Button fx:id="saveChanges" layoutX="244.0" layoutY="530.0" mnemonicParsing="false" text="Save Changes" />
+            <Button fx:id="saveChanges" layoutX="244.0" layoutY="530.0" mnemonicParsing="false" onAction="#btnSaveChanges" text="Save Changes" />
             <Button fx:id="deleteGuests" layoutX="36.0" layoutY="530.0" mnemonicParsing="false" text="Remove Guest(s)" />
             <Label fx:id="eventIDLbl" layoutX="156.0" layoutY="88.0" text="eventID" />
+            <Label fx:id="changesSavedLbl" layoutX="154.0" layoutY="504.0" text="Changes Saved!" textFill="#00ff11" />
          </children>
       </AnchorPane>
    </children>
