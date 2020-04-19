@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="580.0" prefWidth="373.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="venuebrain.editEventController">
+   <children>
+      <AnchorPane prefHeight="609.0" prefWidth="373.0">
+         <children>
+            <Label alignment="CENTER" layoutX="19.0" layoutY="28.0" text="View RSVP Breakdown">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Label layoutX="98.0" layoutY="88.0" text="Event ID: " />
+            <Label layoutX="63.0" layoutY="140.0" text="RSVP Accepted:" />
+            <Label layoutX="63.0" layoutY="174.0" text="RSVP Rejected: " />
+            <TableView fx:id="guestTable" layoutX="33.0" layoutY="263.0" prefHeight="241.0" prefWidth="308.0">
+              <columns>
+                <TableColumn fx:id="guestfNameCol" prefWidth="114.0" text="First Name" />
+                <TableColumn fx:id="guestlNameCol" prefWidth="91.0" text="Last Name" />
+                  <TableColumn fx:id="guestACodeCol" prefWidth="102.0" text="Access Code" />
+              </columns>
+            </TableView>
+            <Label layoutX="148.0" layoutY="238.0" text="Invited Guests" />
+            <Button fx:id="saveChanges" layoutX="244.0" layoutY="530.0" mnemonicParsing="false" text="Save Changes" />
+            <Button fx:id="deleteGuests" layoutX="36.0" layoutY="530.0" mnemonicParsing="false" text="Remove Guest(s)" />
+            <Label fx:id="eventIDLbl" layoutX="156.0" layoutY="88.0" text="eventID" />
+            <Label fx:id="countAccepted" layoutX="156.0" layoutY="140.0" text="countAccepted" />
+            <Label fx:id="countRejected" layoutX="157.0" layoutY="174.0" text="countRejected" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
