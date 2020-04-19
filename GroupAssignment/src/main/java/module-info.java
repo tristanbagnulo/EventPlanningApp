@@ -10,6 +10,7 @@ module venuebrain {
 	requires itextpdf;
     
     requires java.sql;
+    requires java.base;
 
     opens venuebrain to javafx.fxml;
     exports venuebrain;
