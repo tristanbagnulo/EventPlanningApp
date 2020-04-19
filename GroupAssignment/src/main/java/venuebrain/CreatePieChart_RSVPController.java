@@ -5,6 +5,7 @@
  */
 package venuebrain;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ import javafx.stage.Stage;
  *
  * @author Natalie Chan
  */
-public class CreatePieChart_RSVPController implements Initializable {
+public abstract class CreatePieChart_RSVPController implements Initializable {
    
     @FXML
     Label eventIDLbl;
@@ -61,10 +62,11 @@ public class CreatePieChart_RSVPController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    @FXML
+    public void initialize() throws IOException, SQLException {
+ 
+    }
+    
      //Count for Accepted RSVP
    int countAccepted = 0;
    
@@ -132,7 +134,7 @@ public class CreatePieChart_RSVPController implements Initializable {
             DatabaseManager.openConnection();
             
             //Query for taking RSVP accepted for the event from the Database            
-            String acceptedQuery = "SELECT accepted FROM rsvp;Join invitation using invitation_id where event_id = ?";
+            String acceptedQuery = "SELECT accepted FROM rsvp;" + "Join invitation using invitation_id where event_id = ?";
             Statement st = DatabaseManager.sharedConnection.createStatement();
             ResultSet rs = st.executeQuery(acceptedQuery);
             
