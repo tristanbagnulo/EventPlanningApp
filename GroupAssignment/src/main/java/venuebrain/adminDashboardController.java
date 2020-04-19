@@ -53,6 +53,9 @@ public class adminDashboardController{
     MenuItem deleteGuest;
     
     @FXML
+    MenuItem viewRSVP;
+    
+    @FXML
     Menu helpMenu;
     
     @FXML
@@ -225,6 +228,12 @@ public class adminDashboardController{
         Scene guestManagerScene = null;
         
         App.setNewWindow(guestManagerStage, guestManagerScene, "guestManager", 678, 645);
+    }
+    
+    @FXML
+    private void viewRsvpClicked() throws IOException, SQLException {
+        
+        
     }
     
 
