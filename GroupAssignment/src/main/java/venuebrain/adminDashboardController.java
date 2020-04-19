@@ -77,6 +77,9 @@ public class adminDashboardController{
     
     @FXML
     Button guestManager;
+    
+    @FXML
+    Button refresh;
      
     @FXML
 //    Initialise the TableView as FXML variables
@@ -131,6 +134,11 @@ public class adminDashboardController{
     @FXML
     private void showAbout() throws IOException, SQLException {
        App.showAbout();
+    }
+    
+    @FXML
+    private void refreshTable() throws IOException, SQLException {
+       eventTable.setItems(getEventListData());
     }
     
     @FXML
@@ -209,7 +217,7 @@ public class adminDashboardController{
         App.setLoginRoot("adminLogin");  
     }
     
-     @FXML
+    @FXML
     private void btnGuestManager() throws IOException, SQLException {
         
         Stage guestManagerStage = new Stage();

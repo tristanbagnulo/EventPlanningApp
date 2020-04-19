@@ -36,16 +36,10 @@ public class editEventController {
     TextField eventLocationTxt;
     
     @FXML
-    TableView guestTable = new TableView();
+    Label changesSavedLbl;
     
-//    @FXML
-//    TableColumn fNameCol;
-//    
-//    @FXML
-//    TableColumn lNameCol;
-//    
-//    @FXML
-//    TableColumn accessCodeCol;
+    @FXML
+    TableView guestTable = new TableView();
     
 //    Initialise the TableColumns as FXML variables
    @FXML
@@ -67,6 +61,8 @@ public class editEventController {
         guestACodeCol.setCellValueFactory(cellData -> cellData.getValue().getViewableAccessCode());
         
         guestTable.setItems(getGuestListData());
+        
+        changesSavedLbl.setVisible(false);
   
         
     }
@@ -94,8 +90,8 @@ public class editEventController {
         int selectedEventID = DatabaseManager.getEventID(selectedEvent);
         DatabaseManager.openConnection();
         try {
-            String guestListQuery = "﻿SELECT g.first_name, g.last_name, g.access_code, g.email_address, g.phone_number FROM guest g"
-                    + "INNER JOIN invitation i ON g.guest_id = i.guest_id WHERE i.event_id = ?;";
+            String guestListQuery = "﻿SELECT first_name, last_name, access_code, email_address, phone_number FROM guest " 
+                                  + "JOIN invitation USING(guest_id) WHERE event_id = ?";
             ResultSet rs;
             PreparedStatement ps = DatabaseManager.sharedConnection.prepareStatement(guestListQuery);
             ps.setInt(1, selectedEventID);
@@ -104,21 +100,45 @@ public class editEventController {
                 Guest listGuest = new Guest(rs.getString("first_name"), rs.getString("last_name"), 
                         rs.getString("email_address"), rs.getString("phone_number"));
                 listGuest.setAccessCode(rs.getString("access_code"));
-                
-                guestListToReturn.add(
-                    listGuest);
+                guestListToReturn.add(listGuest);
             }
-            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             DatabaseManager.closeConnection();
-        }
-        
-       
+        }   
        return FXCollections.observableArrayList(guestListToReturn);
     }
     
+  @FXML
+  private void btnSaveChanges() throws IOException, SQLException {
+
+        
+        String newEventName = eventNameTxt.getText();
+        String newEventLocation = eventLocationTxt.getText();
+        
+        int selectedEventID = DatabaseManager.getEventID(selectedEvent);
+        DatabaseManager.openConnection();
+        try{
+            DatabaseManager.openConnection();
+            String updateString = "UPDATE event SET event_name = ?, location = ? WHERE event_id = ?";
+            selectedEvent.setEventName(newEventName);
+            selectedEvent.setLocation(newEventLocation);
+            PreparedStatement ps = sharedConnection.prepareStatement(updateString);
+            ps.setString(1, selectedEvent.getEventName());
+            ps.setString(2, selectedEvent.getLocation());
+            ps.setInt(3, selectedEventID);
+            ps.executeUpdate();
+            System.out.println("Event ID = " + selectedEventID + " name set to " + selectedEvent.getEventName()
+                    + " location set to " + selectedEvent.getLocation());
+            changesSavedLbl.setVisible(true);
+        }catch (SQLException e){
+            System.out.println("Event could not be found!");
+            System.out.println(e.getMessage());
+        }finally{
+            DatabaseManager.closeConnection();
+        } 
+    }
     
     
     /*@FXML

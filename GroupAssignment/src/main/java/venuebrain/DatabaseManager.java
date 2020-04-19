@@ -359,8 +359,7 @@ public class DatabaseManager {
     
     public static int getEventID (Event event) throws SQLException{
         DatabaseManager.openConnection();
-        //boolean eventFound = false;
-        int eventID = 0;
+        int eventID= 0;
         try{
           ResultSet rs;
           String sqlString = "SELECT event_id FROM event where event_name = ? AND location = ?";
@@ -370,14 +369,13 @@ public class DatabaseManager {
           rs = ps.executeQuery();
           
           if(rs.next()){
-           eventID = rs.getInt(1);
+           eventID = rs.getInt("event_id");
           }
         }catch (SQLException e){
             System.out.print("Event could not be found!");
         }finally{
             DatabaseManager.closeConnection();
             return eventID;
-            //return eventFound;
         }
     }
     
@@ -398,7 +396,7 @@ public static int getGuestID (Guest guest) throws SQLException{
           rs = ps.executeQuery();
           
           if(rs.next()){
-          guestID = rs.getInt("guest_id");
+            guestID = rs.getInt("guest_id");
           }
           System.out.println("Guest ID = " + guestID);
         }catch (SQLException e){

@@ -6,21 +6,21 @@ package venuebrain;
  * @author Shai C
  */
 public class rsvp {
-    private String invitationId;
-    private String guestId;
+    private int invitationId;
+    private int guestId;
     private String dietaryRequirements;
     private String date;
     
-    public rsvp(String invitationId, String guestId, String date){
+    public rsvp(int invitationId, int guestId, String date){
         this.invitationId = invitationId;
         this.guestId = guestId;
         this.date = date;
     }
     
-    public String getInvitationId() {
+    public int getInvitationId() {
         return invitationId;
     }
-    public String getGuestId() {
+    public int getGuestId() {
         return guestId;
     }
     public String getDietaryRequirements() {
@@ -30,10 +30,10 @@ public class rsvp {
         return date;
     }
     
-    public void setInvitationId(String invitationId) {
+    public void setInvitationId(int invitationId) {
         this.invitationId = invitationId;
     }
-     public void setGuestId(String guestId) {
+     public void setGuestId(int guestId) {
         this.guestId = guestId;
     }
     public void setDietaryRequirements(String dietaryRequirements) {
