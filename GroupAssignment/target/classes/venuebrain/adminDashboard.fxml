@@ -45,6 +45,7 @@
                           <MenuItem fx:id="createInvitations" mnemonicParsing="false" onAction="#createInvitationsClicked" text="Create Invitations" />
                               <MenuItem fx:id="editEvent1" mnemonicParsing="false" onAction="#editEventClicked" text="Edit Event" />
                               <MenuItem fx:id="deleteGuest" mnemonicParsing="false" text="Edit/Delete Guest" />
+                              <MenuItem fx:id="viewRSVP" mnemonicParsing="false" onAction="#viewRsvpClicked" text="View RSVP Breakdown" />
                         </items>
                       </Menu>
                       <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">

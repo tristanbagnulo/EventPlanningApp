@@ -3,36 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package venuebrain; 
-import java.io.IOException;
+package venuebrain;
+
+import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.application.Application;
+import java.util.ResourceBundle;
+import static javafx.application.Application.launch;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
-import javafx.scene.chart.*;
+import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 /**
+ * FXML Controller class
  *
  * @author Natalie Chan
  */
-        
-
-public class createPieChart extends Application{
-    
+public class CreatePieChart_RSVPController implements Initializable {
+   
     @FXML
     Label eventIDLbl;
     
@@ -46,6 +45,9 @@ public class createPieChart extends Application{
     @FXML
     Label rsvpPending;
     
+    @FXML
+    PieChart rsvpPieChart;
+    
     Event selectedEvent;
     
   public void initData(Event event) throws SQLException{
@@ -56,9 +58,14 @@ public class createPieChart extends Application{
        rsvpPending.setText(Integer.toString(countPending));
         
    }  
-    
-    
-    //Count for Accepted RSVP
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+     //Count for Accepted RSVP
    int countAccepted = 0;
    
    //Count for Rejected RSVP
@@ -117,7 +124,7 @@ public class createPieChart extends Application{
      }
      
      
-    public String countAccepted () throws SQLException{
+    private String countAccepted () throws SQLException{
 
         try{
             
@@ -130,6 +137,7 @@ public class createPieChart extends Application{
             ResultSet rs = st.executeQuery(acceptedQuery);
             
             if(rs.next()) {
+                
                 if (rs.getInt("accepted") == 1)
             {
                 //Counting RSVP Accepted
@@ -155,4 +163,31 @@ public class createPieChart extends Application{
     }
     
     }
+    
+    private int getEventID() throws SQLException {
+        int selectedEventID = DatabaseManager.getEventID(selectedEvent);
+        DatabaseManager.openConnection();
+        try {
+            String eventIdQuery = "﻿SELECT event_id FROM invitation WHERE event_id = ?;";
+            ResultSet rs;
+            PreparedStatement ps = DatabaseManager.sharedConnection.prepareStatement(eventIdQuery);
+            ps.setInt(1, selectedEventID);
+            rs = ps.getResultSet();
+            while(rs.next()) {
+                Guest listGuest = new Guest(rs.getString("first_name"), rs.getString("last_name"), 
+                        rs.getString("email_address"), rs.getString("phone_number"));
+                listGuest.setAccessCode(rs.getString("access_code"));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally{
+            DatabaseManager.closeConnection();
+        }
+        
+       
+       return selectedEventID;
+    }
 }
+
+
