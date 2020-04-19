@@ -31,28 +31,24 @@ import javafx.stage.Stage;
  */
         
 
-public class createPieChart extends Application{
+public abstract class createPieChart extends Application{
     
     //Count for Accepted RSVP
-   int countAccepted;
+   int countAccepted = 0;
    
    //Count for Rejected RSVP
-   int countRejected;
+   int countRejected = 0;
    
    //Count for Pending RSVP
-   int countPending;
-   
-   
-    public void initialize() throws IOException, SQLException {
-        
-    @Override
-       public void start (Stage stage){
+   int countPending = 0;
+  
+   public void start (Stage stage){
         
         //ObservableList Object prepared
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
               new PieChart.Data ("Accepted", countAccepted),
-              new PieChart.Data("Declined", countRejected));
-              new PieChart.Data("Declined", countPending)); 
+              new PieChart.Data("Declined", countRejected),
+              new PieChart.Data("Pending", countPending)); 
         
              //Creating PieChart Object
               PieChart pieChart = new PieChart (pieChartData);
@@ -89,14 +85,14 @@ public class createPieChart extends Application{
   
         
     }
-    }
+    
     //Launch Application
      public static void main (String args[]){
          launch(args);
      }
      
      
-    public static int countAccepted () throws SQLException{
+    public String countAccepted () throws SQLException{
 
         try{
             
@@ -109,15 +105,17 @@ public class createPieChart extends Application{
             ResultSet rs = st.executeQuery(acceptedQuery);
             
             if(rs.next()) {
-                if (accepted == 1)
+                if (rs.getInt("accepted") == 1)
             {
                 //Counting RSVP Accepted
                 countAccepted++;
-            } else if (accepted == 2)
+            }
+                else if (rs.getInt("accepted") == 2)
             {
                 //Counting RSVP Rejected
                 countRejected++;
-            } else (accepted == 3)
+            } 
+            else if(rs.getInt("accepted") == 3)
             {
                 //Count RSVP Pending
                 countPending++;
@@ -125,10 +123,11 @@ public class createPieChart extends Application{
         }
         }
         catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
-  
+            System.out.print("Chart could not be generated");
+        }finally{
+            DatabaseManager.closeConnection();
+            return "RSVP: Accepted" + countAccepted + "RSVP: Rejected" + countRejected + "RSVP: Pending" +countPending; 
     }
     
- 
+    }
+}
