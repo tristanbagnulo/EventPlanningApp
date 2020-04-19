@@ -16,3 +16,4 @@ venuebrain/DatabaseManager.class
 venuebrain/guestLoginController.class
 venuebrain/Event.class
 venuebrain/Invitation.class
+venuebrain/createPieChart.class
