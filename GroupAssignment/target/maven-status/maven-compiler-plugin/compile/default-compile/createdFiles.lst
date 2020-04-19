@@ -12,6 +12,7 @@ venuebrain\adminLoginController.class
 venuebrain\DatabaseManager.class
 venuebrain\guestManagerController.class
 venuebrain\rsvp.class
+venuebrain\CreatePieChart_RSVPController.class
 venuebrain\createPieChart.class
 venuebrain\App.class
 venuebrain\Invitation.class
