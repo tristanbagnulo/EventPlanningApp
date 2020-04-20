@@ -24,6 +24,9 @@ public class guestDashboardController {
     
     @FXML
     Button printInvite;
+    
+    @FXML
+    Button showAbout;
    
 
  @FXML
@@ -93,9 +96,19 @@ public class guestDashboardController {
     }
     
     @FXML
+    private void showAbout() throws IOException, SQLException {
+       App.showAbout();
+    }
+    
+    @FXML
     private void btnPrintInvite() throws IOException {
         
-        pdf.testPDF();
+        Event selectedEvent = (Event) event.getSelectionModel().getSelectedItem();
+        
+        String eventName = selectedEvent.getEventName();
+        String location = selectedEvent.getLocation();
+        
+        pdf.invitePDF(eventName, location, (Guest) App.getCurrentUser());
         
     }
 

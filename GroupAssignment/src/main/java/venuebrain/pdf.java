@@ -24,23 +24,25 @@ public class pdf {
         //
     //Print them onto the PDF file.
     
-    public static void testPDF(){
+    public static void invitePDF(String eventName, String location, Guest guest){
        try{
        Document document = new Document();
-       PdfWriter.getInstance(document, new FileOutputStream("iTextHelloWorld.pdf"));
+       PdfWriter.getInstance(document, new FileOutputStream(eventName + " invitation for " + guest.getAccessCode() + ".pdf"));
 
        document.open();
-       document.add(new Paragraph("Tristan Testing PDF"));
+       
       
        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-       Chunk chunk = new Chunk("Hello World", font);
-
+       Chunk chunk = new Chunk("Dear " + guest.getFName(), font);
        document.add(chunk);
+       
+       document.add(new Paragraph("You are cordially invited to " + eventName + " located in " + location + ". We hope you can make it!"));
+
        document.close();
        }catch(Exception e){
            System.out.println(e);
        }
-       System.out.println("itext executed");
+       System.out.println("PDF generated");
     }
     
 }

@@ -17,6 +17,8 @@ Login using the administrator credentials below:
 Administrator Username | Administrator Password
 -------------------- | -----------------------
 admin | Password
+infs2605market | BlairIsAwesome2605
+
 
 
 When inside you will be able to see the following screen which displays all of the events in the 
@@ -90,8 +92,7 @@ Guest Access Code |
 BarackObama5637 |
 CodyKo7558 |
 NeilMatani8724 |
-TrumpSucks6951 |
-YourMum5892 |
+INFSMarker0140 |
 JimSlim5894 |
 
 You will new see the Guest Landing page titled, "Guest Dashboard"
@@ -108,5 +109,5 @@ Let's get into what guests can do and how they do it.
 
 ### Printing an Invitation to a PDF
 
-!!! NOT YET ADDED.
+Simply highlight an event in the Guest Dashboard and click "Print Invitation". The PDF file will be in the project folder.
 
