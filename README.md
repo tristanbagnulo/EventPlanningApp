@@ -17,7 +17,7 @@ Login using the administrator credentials below:
 Administrator Username | Administrator Password
 -------------------- | -----------------------
 admin | Password
-infs2605market | BlairIsAwesome2605
+infs2605marker | BlairIsAwesome2605
 
 
 
