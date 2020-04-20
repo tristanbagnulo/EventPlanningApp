@@ -91,11 +91,11 @@ public class editEventController {
         DatabaseManager.openConnection();
         try {
             String guestListQuery = "﻿SELECT first_name, last_name, access_code, email_address, phone_number FROM guest " 
-                                  + "JOIN invitation USING(guest_id) WHERE event_id = ?";
+                                  + "JOIN invitation USING(guest_id) WHERE event_id = " + selectedEventID;
             ResultSet rs;
-            PreparedStatement ps = DatabaseManager.sharedConnection.prepareStatement(guestListQuery);
-            ps.setInt(1, selectedEventID);
-            rs = ps.getResultSet();
+            Statement st = DatabaseManager.sharedConnection.createStatement();
+            //ps.setInt(1, selectedEventID);
+            rs = st.executeQuery(guestListQuery);
             while(rs.next()) {
                 Guest listGuest = new Guest(rs.getString("first_name"), rs.getString("last_name"), 
                         rs.getString("email_address"), rs.getString("phone_number"));
