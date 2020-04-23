@@ -46,6 +46,7 @@
             <Label layoutX="168.0" layoutY="153.0" prefHeight="17.0" prefWidth="76.0" text="Guest Email:" />
             <Label layoutX="157.0" layoutY="191.0" prefHeight="0.0" prefWidth="98.0" text="Guest  Phone:" />
             <Label fx:id="noSelection" layoutX="141.0" layoutY="605.0" text="No Guest was selected!" textFill="RED" />
+            <Label layoutX="253.0" layoutY="583.0" text="Tip: Double click guest detail to edit." />
          </children>
       </AnchorPane>
    </children>

@@ -33,6 +33,7 @@
                </font>
             </Label>
             <Button fx:id="printInvite" layoutX="587.0" layoutY="558.0" mnemonicParsing="false" onAction="#btnPrintInvite" text="Print Invitation" />
+            <Button fx:id="showAbout" layoutX="854.0" layoutY="33.0" mnemonicParsing="false" onAction="#showAbout" text="About" />
          </children>
       </AnchorPane>
    </children>
